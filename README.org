@@ -3,7 +3,7 @@
 
 In these tutorials, we’ll learn programming together using the book: [[https://www.stroustrup.com/programming.html][Programming -- Principles and Practice Using C++ (3rd Edition)]].
 
-The code in this repository is a supplement to my [[https://www.youtube.com/watch?v=hUb6sFqVzE0&list=PLAHKaJGVF3tq9nAQNCSbjQFZe8PULjxUI][Youtube tutorials]].
+The code in this repository is a supplement to my [[][Youtube tutorials]].
 
 Each directory in this repo corresponds to a YouTube video and contains the =.org= file featured in that video, which includes the full tutorial.
 
