@@ -1,6 +1,4 @@
-* أساسيات البرمجه بلغه *++C*
-اهلا ومرحبا في كورس اسايات البرمجه بلغه ال ++C.
+* Basics of Programming in C++
+Welcome to my humble programming with C++ tutorials
 
-في الكورس دا بنحاول سوا نتعلم المبادئ والمفاهيم الأساسيه للبرمجه من كتاب: [[https://www.stroustrup.com/programming.html][Programming -- Principles and Practice Using C++]]    
-
-الكورس دا هنحاول فيه اننا نشرح الكتاب بشكل مبسط مع بعض من التحسينات. وده [[https://www.youtube.com/watch?v=hUb6sFqVzE0&list=PLAHKaJGVF3tq9nAQNCSbjQFZe8PULjxUI][رابط ال playlist علي youtube]]
+in these tutotrials we try to learn programming together using this book: [[https://www.stroustrup.com/programming.html][Programming -- Principles and Practice Using C++ (3rd Edition)]]
