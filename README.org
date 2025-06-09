@@ -16,11 +16,8 @@ If you want to get the maximum benefit from the course, try to solve everything 
 Then, use the solutions only to check whether your answers match the expected standard.
 #+end_quote
 
-#+begin_html
-<div style="background-color:#fff3cd; border-left:5px solid #ffa502; padding:10px; margin:10px 0;">
-  ⚠️ <strong style="color:red;">Warning:</strong> This action will delete all your files.
-</div>
-#+end_html
+* Warning ⚠️
+> **Warning**: This is a warning message! GitHub will render this correctly.
 
 If you run into any issues, please don’t hesitate to open a pull request.
 That’s it—enjoy! 😊
