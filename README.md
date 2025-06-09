@@ -1,6 +1,6 @@
 # Basics of Programming in C++
 
-> ️ **Warning:** **The project is still under development**
+> ⚠️ **Warning:** **The projject is still under development**
 
 ## Introduction
 **Welcome to my humble programming with C++ tutorials.**
@@ -13,7 +13,7 @@ You’ll also find a few subdirectories with solutions to drills and exercises a
 
 Images used in the `.org` files will live in the images directory, links from `.org` files will refer to them.
 
-> ️ **Warning:** *The solutions are meant only for comparison with your own work.*  
+> ⚠️ **Warning:** *The solutions are meant only for comparison with your own work.*  
 > Please don’t use them as a shortcut to the answers for drills, exercises, etc.  
 > If you want to get the maximum benefit from the course, try to solve everything on your own first.  
 > Then, use the solutions only to check whether your answers match mine.
