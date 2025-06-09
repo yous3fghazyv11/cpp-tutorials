@@ -13,8 +13,8 @@ You’ll also find a few subdirectories with solutions to drills and exercises, 
 ⚠️ **Warning:** *The solutions are meant only for comparison with your own work.*
 Please don’t use them as a shortcut to the answers for drills, exercises, etc.
 If you want to get the maximum benefit from the course, try to solve everything on your own first.
-Then, use the solutions only to check whether your answers match the expected standard.
+Then, use the solutions only to check whether your answers match mine.
 #+end_quote
 
-If you run into any issues, please don’t hesitate to open a pull request.
+If you run into any issues, please don’t hesitate to open a an issue or a PR.
 That’s it—enjoy! 😊
