@@ -1,4 +1,6 @@
 * اول برنامج ++C
 دائما لما اول برنامج بنعمله في اي لغه برمجه جديده بيكون مجرد برنامج بسيط مهمته انه يطبع 'Hello, World' في ال standard output مثلا زي كدا
+
 [[../images/hello_world_exec.png]]
+
 لاحظ ان هنا علامه ال =/.= دي زي بظبط ما تكون بتعمل double click علي برنامج اسمه hello_world.exe مثلا، دي حرفيا بتقول لل shell بتاعي execute this file
