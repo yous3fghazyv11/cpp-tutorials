@@ -1,13 +1,13 @@
 * Basics of Programming in C++
-Welcome to my humble programming with C++ tutorials.
+*Welcome to my humble programming with C++ tutorials.*
 
-in these tutotrials we try to learn programming together using this book: [[https://www.stroustrup.com/programming.html][Programming -- Principles and Practice Using C++ (3rd Edition)]].
+In these tutorials, we’ll learn programming together using the book: [[https://www.stroustrup.com/programming.html][Programming -- Principles and Practice Using C++ (3rd Edition)]].
 
-the code in this repo is a supplementary to my [[https://www.youtube.com/watch?v=hUb6sFqVzE0&list=PLAHKaJGVF3tq9nAQNCSbjQFZe8PULjxUI][youtube tutorials]].
+The code in this repository is a supplement to my [[https://www.youtube.com/watch?v=hUb6sFqVzE0&list=PLAHKaJGVF3tq9nAQNCSbjQFZe8PULjxUI][Youtube tutorials]].
 
-each directory in this repo will represent a youtube video, and will have the =.org= file found in the video, which is going to have all the tutorials.
+Each directory in this repo corresponds to a YouTube video and contains the =.org= file featured in that video, which includes the full tutorial.
 
-along with few subdirectories for solutions to drills, exercises, images in the org file, etc...
+You’ll also find a few subdirectories with solutions to drills and exercises, as well as images used in the =.org= files.
 
-if you are having trouble with anything please don't hasitate to open up a *pull request*.
-and that's it, enjoy :)
+If you run into any issues, please don’t hesitate to open a pull request.
+That’s it—enjoy! 😊
