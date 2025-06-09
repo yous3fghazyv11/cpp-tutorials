@@ -18,3 +18,11 @@ Then, use the solutions only to check whether your answers match mine.
 
 If you run into any issues, please don’t hesitate to open a an issue or a PR.
 That’s it—enjoy! 😊
+
+** Prerequisites
+This course assumes that you already have a working setup consisting of:
+1. *A text editor* – This can be VS Code, Visual Studio, Notepad++, Sublime Text, Vim, etc.
+2. *C++ compiler* – Such as GCC, Clang, MSVC, etc.
+
+If you don’t already have these tools installed, please search online for how to set up a C++ programming environment.
+There are plenty of tutorials on YouTube that cover this topic in detail.
