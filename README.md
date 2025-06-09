@@ -16,6 +16,17 @@ You’ll also find a few subdirectories with:
 > If you want to get the maximum benefit from the course, try to solve everything on your own first.  
 > Then, use the solutions only to check whether your answers match mine.
 
+<div style="background-color:#fff3cd; border-left:5px solid #ffa502; padding:10px; margin:10px 0;">
+  ⚠️ <strong style="color:red;">Warning:</strong> This action will permanently delete your files.
+</div>
+
+!!! warning "Warning"
+    This action will permanently delete your files.
+    
+:::caution
+This action will permanently delete your files.
+:::
+
 If you run into any issues, please don’t hesitate to open an issue or a pull request.  
 That’s it — enjoy! :)
 
