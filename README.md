@@ -3,7 +3,7 @@
 ## Introduction
 **Welcome to my humble programming with C++ tutorials.**
 
-The code in this repository is a supplement to my [YouTube tutorials](#). <!-- Replace # with actual link -->
+The code in this repository is a supplement to my [YouTube tutorials](https://www.youtube.com/@yousefghazy).
 
 Each directory in this repo corresponds to a YouTube video and contains the `.org` file featured in that video, which includes the full tutorial.
 
