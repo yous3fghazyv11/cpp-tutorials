@@ -21,8 +21,6 @@ You’ll also find a few subdirectories with:
 If you run into any issues, please don’t hesitate to open an issue or a pull request.  
 That’s it — enjoy! 😊
 
----
-
 ## Prerequisites
 
 This course assumes you already have a working setup consisting of:
