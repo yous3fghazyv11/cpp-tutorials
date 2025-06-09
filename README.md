@@ -8,8 +8,9 @@ The code in this repository is a supplement to my [YouTube tutorials](https://ww
 Each directory in this repo corresponds to a YouTube video and contains the `.org` file featured in that video, which includes the full tutorial.
 
 You’ll also find a few subdirectories with:
-- Solutions to drills and exercises  
-- Images used in the `.org` files
+- Solutions to drills and exercises along with header files if any are used  
+
+Images used in the `.org` files will live in the images directory, links from `.org` files will refer to them.
 
 > ⚠️ **Warning:** *The solutions are meant only for comparison with your own work.*  
 > Please don’t use them as a shortcut to the answers for drills, exercises, etc.  
