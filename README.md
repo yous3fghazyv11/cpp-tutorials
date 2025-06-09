@@ -1,6 +1,6 @@
 # Basics of Programming in C++
 
-> ⚠️ **Warning:** **The projject is still under development**
+> ⚠️ **Warning:** **The project is still under development**
 
 ## Introduction
 **Welcome to my humble programming with C++ tutorials.**
