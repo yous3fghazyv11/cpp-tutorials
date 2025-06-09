@@ -24,5 +24,6 @@ This course assumes that you already have a working setup consisting of:
 1. *A text editor* – This can be VS Code, Visual Studio, Notepad++, Sublime Text, Vim, etc.
 2. *C++ compiler* – Such as GCC, Clang, MSVC, etc.
 
-If you don’t already have these tools installed, please search online for how to set up a C++ programming environment.
-There are plenty of tutorials on YouTube that cover this topic in detail.
+If you don’t already have these tools installed, please search online for [[https://www.youtube.com/watch?v=DMWD7wfhgNY&t=135s][how to set up a C++ programming environment.]]
+The linked video is a good start, it uses GCC compiler with Visual Studio Code text editor, also there are plenty of tutorials on YouTube that cover this topic in detail,
+choose the setup you like :).
