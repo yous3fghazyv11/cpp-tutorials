@@ -3,4 +3,4 @@
 
 في الكورس دا بنحاول سوا نتعلم المبادئ والمفاهيم الأساسيه للبرمجه من كتاب: [[https://www.stroustrup.com/programming.html][Programming -- Principles and Practice Using C++]]    
 
-الكورس دا هنحاول فيه اننا نشرح الكتاب بقدر الامكان 
+الكورس دا هنحاول فيه اننا نشرح الكتاب بشكل مبسط مع بعض من التحسينات. وده [[https://www.youtube.com/watch?v=hUb6sFqVzE0&list=PLAHKaJGVF3tq9nAQNCSbjQFZe8PULjxUI][رابط ال playlist علي youtube]]
