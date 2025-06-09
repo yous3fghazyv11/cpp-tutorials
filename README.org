@@ -1,1 +1,2 @@
 * أساسيات البرمجه بلغه *++C*
+اهلا بك في كورس اسايات البرمجه بلغه ال ++C، في الكورس دا بنحاول سوا نتعلم المبادئ والمفاهيم الأساسيه للبرمجه من كتاب: [[https://www.stroustrup.com/programming.html][Programming -- Principles and Practice Using C++]] 
