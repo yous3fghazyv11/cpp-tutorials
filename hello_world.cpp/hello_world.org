@@ -1,6 +1,19 @@
 * اول برنامج ++C
+** the calssic first program
 دائما لما اول برنامج بنعمله في اي لغه برمجه جديده بيكون مجرد برنامج بسيط مهمته انه يطبع 'Hello, World' في ال standard output مثلا زي كدا
 
 [[../images/hello_world_exec.png]]
 
 لاحظ ان هنا علامه ال =/.= دي زي بظبط ما تكون بتعمل double click علي برنامج اسمه hello_world.exe مثلا، دي حرفيا بتقول لل shell بتاعي execute this file
+
+علشان نعمل حاجه زي كدا في ++C هنحتاج نكتب الكود دا:
+
+#+begin_src C++
+#include <iostream>
+
+int main()
+{
+    std::cout << "Hello, World!" << std::endl;
+    return 0;
+}
+#+end_src>
