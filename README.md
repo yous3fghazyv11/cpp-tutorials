@@ -2,8 +2,8 @@
 
 **Welcome to my humble programming with C++ tutorials.**
 
-In these tutorials, we’ll learn programming together using the book:  
-📘 [*Programming — Principles and Practice Using C++ (3rd Edition)*](https://www.stroustrup.com/programming.html)
+In these tutorials, we’ll learn programming together using the book:
+[*Programming — Principles and Practice Using C++ (3rd Edition)*](https://www.stroustrup.com/programming.html)
 
 The code in this repository is a supplement to my [YouTube tutorials](#). <!-- Replace # with actual link -->
 
