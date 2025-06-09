@@ -1,9 +1,7 @@
 # Basics of Programming in C++
 
+## Introduction
 **Welcome to my humble programming with C++ tutorials.**
-
-In these tutorials, we’ll learn programming together using the book:  
-[*Programming — Principles and Practice Using C++ (3rd Edition)*](https://www.stroustrup.com/programming.html)
 
 The code in this repository is a supplement to my [YouTube tutorials](#). <!-- Replace # with actual link -->
 
@@ -19,7 +17,7 @@ You’ll also find a few subdirectories with:
 > Then, use the solutions only to check whether your answers match mine.
 
 If you run into any issues, please don’t hesitate to open an issue or a pull request.  
-That’s it — enjoy! 😊
+That’s it — enjoy! :)
 
 ## Prerequisites
 
@@ -29,5 +27,13 @@ This course assumes you already have a working setup consisting of:
 2. **A C++ compiler** – such as GCC, Clang, MSVC, etc.
 
 If you don’t already have these tools installed, you can check this YouTube video to get started:  
-🎥 [How to set up a C++ programming environment](https://www.youtube.com/watch?v=DMWD7wfhgNY&t=135s)  
-The video uses GCC with Visual Studio Code, but there are plenty of tutorials on YouTube—feel free to choose the setup that works best for you. 🙂
+[How to set up a C++ programming environment](https://www.youtube.com/watch?v=DMWD7wfhgNY&t=135s)  
+The video uses GCC with Visual Studio Code, but there are plenty of tutorials on YouTube—feel free to choose the setup that works best for you. ^_^
+
+## Credits
+in this section i will give credits to the awesome books and resources i used to bring this course to life.
+
+- [*Programming — Principles and Practice Using C++ (3rd Edition)*](https://www.stroustrup.com/programming.html)
+- [*Structure and Interpretation of Computer Programs*](https://www.goodreads.com/book/show/43713.Structure_and_Interpretation_of_Computer_Programs)
+- [*Hacking: The Art of Exploitation*](https://www.amazon.eg/-/en/Hacking-Art-Exploitation-Jon-Erickson/dp/1593271441)
+- [*How to Design Programs*](https://htdp.org/)
