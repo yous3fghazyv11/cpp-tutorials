@@ -22,3 +22,5 @@ int main() // defining the main function
     return 0; // value returned to the operating system
 } // end of the function body
 #+end_src>
+
+[[../images/compilation.png]]

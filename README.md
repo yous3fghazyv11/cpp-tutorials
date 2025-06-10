@@ -2,7 +2,7 @@
 
 > ⚠️ **Warning:** **The project is still under development**
 
-📄 Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
 
 ## Introduction
 **Welcome to my humble programming with C++ tutorials.**
