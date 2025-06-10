@@ -88,3 +88,94 @@ std::cout << '\n';
 [[../images/execution_of_get_age_program.png]]
 
 هتلاحظ اننا بنشغل البرنامج، بيديلنا ال prompt الحلوه بتاعتنا، بنكتب 20 وبنضغط enter واللي ساعات بيتقال عليها return، وبيقولي your age is 20.
+
+خلينا نبص بصه علي برنامج تاني برضو بيعمل حاجه مشابهه:
+
+#+begin_src C++
+#include <iostream>
+#include <string>
+
+int main()
+{
+	std::cout << "Please type your name:\n> ";
+	std::string name;
+	std::cin >> name;
+	std::cout << "Hello, " << name << "!\n";
+	return 0;
+}
+#+end_src
+
+اول حاجه هتلاحظ اننا علشان نقدر نتعامل مع ال strings هنحتاج نستخدم المكتبه او ال header file اللي اسمه string ودا برضو header تبع ال C++ standard library وبرضو علشان نستخدم ال strings جوا الكود لازم نحط قبلهم =::std= غير كدا البرنامج تقريبا زيه زي اللي فات بظبط، وتنفيذه هيبقي عامل كدا:
+
+[[../images/execution_of_get_name.png]]
+
+** الvariables
+ببساطة، ما نقدرش نعمل أي حاجة مفيدة على الكمبيوتر من غير ما نخزن بيانات في الmemory، زي ما عملنا مع الinput statement في المثال اللي فوق. "الأماكن" اللي بنخزن فيها البيانات دي بنسميها كائنات (objects).
+
+علشان نوصل ونستخدم object لازم يكون له اسم. الobject اللي له اسم بنسميه متغير (variable)، وبيكون له نوع محدد (type) زي int أو string. النوع ده هو اللي بيحدد إيه اللي ممكن نحطه جوه المتغير (زي مثلًا: 123 ممكن يتحط في int، و"Hello, World!\n" ممكن يتحط في string)، وكمان بيحدد إيه العمليات اللي ممكن نعملها عليه (زي إننا نضرب أعداد صحيحة او integers باستخدام الoperator *، أو نربط بين نصوص --نعمل concatentation-- باستخدام الoperator +).
+
+القيم اللي بنحطها جوه المتغيرات دي بنسميها قيم (values).
+
+الجملة اللي بتعرّف variable جديد اسمها (مش مفاجأة) تعريف (definition)، وغالبًا (ومن الأفضل) يكون فيها قيمة ابتدائية (initial value). مثلا:
+
+#+begin_src C++
+std::string name = "yousef";
+int number_of_steps = 33;
+#+end_src
+
+القيمه اللي بتيجي بعد علامه اليساوي === بيتقال عليها initilazier او قيمه ابتدائيه.
+
+تقدر تتخيل الvariables دي كobjects في ال memory بالشكل دا:
+
+[[../images/objects_in_memory.png]]
+
+ولاحظ اننا مينفعش نحط نوع غلط من البيانات جوا variable، لازم نحط الdata بشكل يكون according to the variable type، مثلا:
+
+#+begin_src C++
+int age = "yousef";	    // error: "yousef" is not an integer
+std::string name = 20;  // error: 20 is not a string
+#+end_src
+
+الcompiler بياخد باله من نوع كل variable، وبيتأكد إنك بتستخدمه بالطريقة اللي تناسب نوعه، النوع اللي انت اختارته وانت بتdefine او بتعرف ال variable.
+
+عندنا في ال ++C في عدد كبير جدا من الprimitive types بتيجي مع اللغه، بس في الأول كدا خلينا نعرفك علي 5 بس منهم:
+
+#+begin_src C++
+int number_of_steps = 33;  // int for integer numbers
+double flying_time = 3.5;  // double for floating-point numbers
+char decimal_point = '.';  // char for individual characters
+string name = "yousef";    // string for character strings
+bool tap_on = true;        // bool for logical variables
+#+end_src
+
+السبب في اسم =double= دا تاريخي شويه، double هنا معناها double-precision floating point، والfloating point هي طريقه الكمبيوتر في التعبير عن الأعداد الحقيقه.
+
+ولاحظ ان كل نوع من دول ليه الستايل المميز بتاعه في طريقه كتابته واللي بيتقال عليه literal:
+
+#+begin_src C++
+33        // int: an integer
+3.5       // double: a floating-point number
+'.'       // char: an individual character enclosed in single quotes
+"yousef"  // string: a sequence of characters delimited by double quotes
+true      // bool: either true or false
+#+end_src
+
+يعني إيه؟ يعني تسلسل من الأرقام (زي 1234 أو 2 أو 976) معناه عدد صحيح (integer)، وحرف واحد جوا single quotes (زي '1' أو '@' أو 'x' أو 'n\') معناه حرف، وتسلسل أرقام فيه نقطة عشرية (زي 1.234 أو 0.12 أو 92.) معناه رقم عشري (floating-point)، وتسلسل من الحروف جواه double quotes (زي "1234" أو "Hello!\n" أو "yousef") معناه نص (string).
+
+** الinput مع الtypes
+عمليه انك تاخد input باستخدام ال get from operator او =<<= بتبقي حساسه للtype بتاع القيمه اللي داخله ونوع الvariable اللي انت بتدخل فيه، وبتقرأ بنائا علي الtype بتاعهم، بص كدا المثال دا مثلا:
+
+#+begin_src C++
+int main()  // read name and age
+{
+	std::cout << "Please enter your first name and age\n> ";
+	std::string first_name = "???";  // string variable ("???" indicates "don’t know the name")
+	int age = -1;                    // integer variable (-1 means "don’t know the age")
+	std::cin >> first_name >> age;   // read a string followed by an integer
+	std::cout << "Hello, " << first_name << " (age " << age << ")\n";
+}
+#+end_src
+
+تعالي نجرب نلعب شويه مع البرنامج دا ونشوف هيتصرف ازاي في حالات مختلفه:
+
+[[../images/test_name_age.png]]
