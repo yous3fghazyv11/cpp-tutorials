@@ -1,6 +1,4 @@
 * اول برنامج ++C
-البدايه الحقيقه مع ++C
-
 [[https://example.com][فيديو الشرح]]
 
 ** طباعه 'hello, world'
@@ -8,19 +6,58 @@
 
 [[../images/hello_world_exec.png]]
 
+طبعا الكلام دا من جوا ال terminal والرموز =$ code/~= دي اسمها prompt ومعناها انه مستني مني input، فانا دخلتله =hello_world/.= علشان اقوله يعمل execute للبرنامج اللي اسمه hello_world، لو هتعمل دا من برا الترمينال فانت هيبقي عندك ملف اسمه hello_world هتعمل عليه double click هيفتحلك ال terminal وهيكتبلك جواها '!Hello, World'
+
 لاحظ ان هنا علامه ال =/.= دي زي بظبط ما تكون بتعمل double click علي برنامج اسمه hello_world.exe مثلا، دي حرفيا بتقول لل shell بتاعي execute this file
 
-علشان نعمل حاجه زي كدا في ++C هنحتاج نكتب الكود دا:
+علشان نعمل برنامج زي كدا في ++C هنحتاج نكتب الكود دا:
 
 #+begin_src C++
 // Simple program to print out "Hello, World!" in the standard output (terminal)
-#include <iostream> // importing necessary input/output functionalities from the standard library
+#include <iostream>
 
-int main() // defining the main function
-{ // begining of the function body
-    std::cout << "Hello, World!" << std::endl; // the line that actually produces the output
-    return 0; // value returned to the operating system
-} // end of the function body
-#+end_src>
+int main()
+{
+    std::cout << "Hello, World!\n"; // the line that actually produces the output
+    return 0;
+}
+#+end_src
 
-[[../images/compilation.png]]
+وخلينا نبدأ نناقش كل سطر من البرنامج دا بيعمل ايه
+
+*** ال comments
+خلينا نبدأ نشرح السطر دا
+
+#+begin_src C++
+// Simple program to print out "Hello, World!" in the standard output (terminal)
+#+end_src
+
+السطر دا اسمه =comment= ، اي حاجه بتبدأ بعد علامه =//= او اتنين سلاش بتبقي comment، وال comments مش تعليمات بتتنفذ من قبل ال compiler، لاحظ انها اصلا مجرد كلام انجليزي عادي، هي مجرد كلام بنكتبه علشان المبرمج اللي بيقرأ الكود، واحنا هنا استخدمنا ال comments علشان نوضحلك البرنامج دا بيعمل ايه
+
+#+begin_src C++
+std::cout << "Hello, World!\n"; // the line that actually produces the output
+#+end_src
+
+لاحظ برضو في السطر دا في comment بعد ال =//=
+واول حاجه عايزك تاخد بالك منها هي انك تقدر تكتب comments في نفس السطر اللي فيه الكود عادي بس لازم يكون في اخر السطر بعد لما خلصت الكود، لأن كل حاجه بعد ال =//= هتعتبر comment ولو عملت comment قبل ما الكود يخلص هتتفاجئ ان الكود بتاعك مش بيتقرأ ومش بيتنفذ، لحسن الحظ معظم ال IDEs وال Text Editors بيعملوا ال comments ب font معين يخلينا نقدر ناخد بالنا لو حاجه زي دي حصلت، بص مثلا المثال دا:
+
+#+begin_src C++
+std::cout << // comment "Hello, World!\n";
+#+end_src
+
+لو جربت تشغل الكود دا هيطلعلك error، لأن زي ما قلنا كل حاجه بعد ال =//= هتبقي comment لحد اخر السطر
+
+انا عارف انت بتقول ايه دلوقتي، غالبا بتقول ايه يا عم الملل دا، انا ليه ممكن احتاج اكتب حاجه زي كدا في الكود بتاعي، الحقيقه انك *هتحتاج* تكتب دا في الكود بتاعك، وحتي في الامثله اللي هتشوفها في الكتاب دا، هتلاقي اكواد كتير انا بحط عليها comments علشان اشرحلك الاكواد دي بتعمل ايه، من غير ال comments ممكن كنت هتواجه صعوبه في الفهم، وكذلك لو انت بتقرأ كود حد تاني كاتبه، ممكن تلاقي نفسك بتشتم اللي كاتب الكود بسبب انه مش كاتب comments بتشرح الكود بيعمل ايه، بس كتابه ال comments مش سهله، معظم الناس بتكتب comments لمجرد انها يبقي اسمها كتبت comments، في احد الفيديوهات المتقدمه انا هشرح ازاي تكتب comments صح
+
+*** عمليه الطباعه وال standard iostream
+بغض النظر عن ال comments، خلينا نشوف السطر دا بتعمق اكتر
+
+#+begin_src C++
+std::cout << "Hello, World!\n";
+#+end_src
+
+انا شيلت الكومنت علشان ميبقاش مصدر الهاء ونقدر نركز علي السطر نفسه
+
+اللي السطر دا بيعمله باختصار انه بيطبع "!Hello, World" لل standard output واللي هو ال terminal وبعد كدا بينزل سطر.
+
+لما هنيجي نقرأ السطر دا هنقول 
