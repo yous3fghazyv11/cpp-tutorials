@@ -138,11 +138,12 @@ return_type func_name(parameters_list)
 #+begin_src C++
 int f(int x)
 {
+	std::cout << "function f() executed";
 	return x * x;
 }
 #+end_src
 
-تقريبا انت المفروض تكون فاهم كل حاجه معدا بس =int= و =return= ، غير كدا فالداله دي اسمها f وبتاخد منك paramter اسمه x بترجعلك x * x اللي هي x تربيع يعني
+تقريبا انت المفروض تكون فاهم كل حاجه معدا بس =int= و =return= ، غير كدا فالداله دي اسمها f وبتاخد منك paramter اسمه x، بتطبع جمله معينه وبترجعلك x * x اللي هي x تربيع يعني
 
 ونقدر نستخدم الداله دي بعد كدا في الكود بتاعنا بالشكل دا:
 
@@ -151,7 +152,7 @@ int f(int x)
 
 int f(int x)
 {
-	std::cout << "i will now execute the function f(x)\n";
+	std::cout << "function f() executed";
 	return x * x;
 }
 
@@ -162,7 +163,7 @@ int main()
 }
 #+end_src
 
-الكود دا هيطبع "i will now execute the function f(x)" وبعدها علطول هيطبع 9 في ال terminal، وهنا لاحظ ان =f(3)= *بترجع* 9 زي بظبط لو كنا استخدمنا داله في الرياضه، ولاحظ برضو ان cout يقدر انه يطبع النتايج بتاعه ال functions، زي ما يكون تقريبا f(3) دي اتشالت واتحط بدالها 9، بس انت عارف انها متشالتش ولا حاجه، كل اللي حصل ان الfunction دي *اتنفذت*
+الكود دا هيطبع "function f(x) executed" وبعدها علطول هيطبع 9 في ال terminal، وهنا لاحظ ان =f(3)= *بترجع* 9 زي بظبط لو كنا استخدمنا داله في الرياضه، ولاحظ برضو ان cout يقدر انه يطبع النتايج بتاعه ال functions، زي ما يكون تقريبا f(3) دي اتشالت واتحط بدالها 9، بس انت عارف انها متشالتش ولا حاجه، كل اللي حصل ان الfunction دي *اتنفذت*
 
 بالنسبه بقا ل int اللي في =()int f= دي بتقول ان الداله دي هترجع قيمه من نوع int او integer، وده لأن علي عكس الرياضه اللي دايما بترجع قيم عدديه، في البرمجه ممكن الدوال عندنا ترجع قيم مش عدديه، وكذلك int اللي في =int x= بتعرف الداله انها هتستقبل parameter من نوع integer او قيمه عدديه، علشان برضو الدوال في البرمجه علي عكس الرياضه تقدر تستقبل parameters مش ارقام عدديه، زي مثلا الداله دي:
 
@@ -172,7 +173,7 @@ int main()
 
 std::string add(std::string name)
 {
-	std::cout << "i will now execute the function add(name)\n";
+	std::cout << "function add() executed";
 	return "hello, " + name + " how are you doing today?";
 }
 
@@ -198,11 +199,13 @@ int main()
 
 std::string add(std::string name)
 {
+	std::cout << "function add() executed\n";
 	return "hello, " + name + " how are you doing today?";
 }
 
 int f(int x)
 {
+	std::cout << "function f() executed\n";
 	return x * x;
 }
 
@@ -213,3 +216,9 @@ int main()
 	return 0;
 }
 #+end_src
+
+**** نرجع لل main
+طيب احنا كدا عرفنا يعني ايه function، بس لسه مش عارفين ايه هي ال main function دي بظبط.
+
+مبدئيا الكود لازم يكون فيه main function، ولازم يكون فيه main واحده ومينفعش يكون فيه اكتر من main، لأن لما ال operating system بيشغل البرنامج بتاعك،
+هو بيخش يدور علي ال main function دي ويشغلها، علشان كدا لو تلاحظ انت مش مضطر انك تشغل الmain بأنك مثلا تكتب =()main= في مكان ما عندك في الكود، لأن بمجرد انك تعمل double click او تexecute البرنامج، انت كدا بتشغل ال main، وده مش بيحصل غير مع ال main بس، يعني f و add مش هيشتغلوا automatic، لازم الأول يتم استدعائهم من ال main علشان يتفذوا
