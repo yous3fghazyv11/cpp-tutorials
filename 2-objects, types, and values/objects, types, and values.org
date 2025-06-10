@@ -169,8 +169,8 @@ true      // bool: either true or false
 int main()  // read name and age
 {
 	std::cout << "Please enter your first name and age\n> ";
-	std::string first_name = "???";  // string variable ("???" indicates "don’t know the name")
-	int age = -1;                    // integer variable (-1 means "don’t know the age")
+	std::string first_name;          // string variable
+	int age = 44;                    // integer variable with arbitrary value
 	std::cin >> first_name >> age;   // read a string followed by an integer
 	std::cout << "Hello, " << first_name << " (age " << age << ")\n";
 }
