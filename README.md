@@ -2,6 +2,8 @@
 
 > ⚠️ **Warning:** **The project is still under development**
 
+📄 Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+
 ## Introduction
 **Welcome to my humble programming with C++ tutorials.**
 
@@ -40,4 +42,3 @@ in this section i will give credits to the awesome books and resources i used to
 - [*Hacking: The Art of Exploitation*](https://www.amazon.eg/-/en/Hacking-Art-Exploitation-Jon-Erickson/dp/1593271441)
 - [*How to Design Programs*](https://htdp.org/)
 
-📄 Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
