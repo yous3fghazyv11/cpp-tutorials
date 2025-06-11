@@ -15,11 +15,11 @@
 
 int main()
 {
-	std::cout << "Please type your age:\n> ";
-	int age;
-	std::cin >> age;
-	std::cout << "your age is " << age << '\n';
-	return 0;
+    std::cout << "Please type your age:\n> ";
+    int age;
+    std::cin >> age;
+    std::cout << "your age is " << age << '\n';
+    return 0;
 }
 #+end_src
 
@@ -97,11 +97,11 @@ std::cout << '\n';
 
 int main()
 {
-	std::cout << "Please type your name:\n> ";
-	std::string name;
-	std::cin >> name;
-	std::cout << "Hello, " << name << "!\n";
-	return 0;
+    std::cout << "Please type your name:\n> ";
+    std::string name;
+    std::cin >> name;
+    std::cout << "Hello, " << name << "!\n";
+    return 0;
 }
 #+end_src
 
@@ -168,11 +168,11 @@ true      // bool: either true or false
 #+begin_src C++
 int main()  // read name and age
 {
-	std::cout << "Please enter your first name and age\n> ";
-	std::string first_name;          // string variable
-	int age = 44;                    // integer variable with arbitrary value
-	std::cin >> first_name >> age;   // read a string followed by an integer
-	std::cout << "Hello, " << first_name << " (age " << age << ")\n";
+    std::cout << "Please enter your first name and age\n> ";
+    std::string first_name;          // string variable
+    int age = 44;                    // integer variable with arbitrary value
+    std::cin >> first_name >> age;   // read a string followed by an integer
+    std::cout << "Hello, " << first_name << " (age " << age << ")\n";
 }
 #+end_src
 
