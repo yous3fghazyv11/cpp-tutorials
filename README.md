@@ -1,7 +1,9 @@
 # Basics of Programming in C++
 
 > [!NOTE]
-> **The project is still under development**
+> The project is still under development
+![](https://geps.dev/progress/10)
+
 
 Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
 
@@ -17,10 +19,10 @@ You’ll also find a few subdirectories with solutions to drills and exercises a
 Images used in the `.org` files will live in the images directory, links from `.org` files will refer to them.
 
 > [!WARNING]  
-> **The solutions are meant only for comparison with your own work.**  
-> **Please don’t use them as a shortcut to the answers for drills, exercises, etc.**  
-> **If you want to get the maximum benefit from the course, try to solve everything on your own first.**  
-> **Then, use the solutions only to check whether your answers match mine.**
+> The solutions are meant only for comparison with your own work.  
+> Please don’t use them as a shortcut to the answers for drills, exercises, etc.  
+> If you want to get the maximum benefit from the course, try to solve everything on your own first.  
+> Then, use the solutions only to check whether your answers match mine.
 
 If you run into any issues, please don’t hesitate to open an issue or a pull request.  
 That’s it — enjoy! :)
