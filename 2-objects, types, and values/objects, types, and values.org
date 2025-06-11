@@ -459,6 +459,23 @@ time@to@market  // @ is not a letter, digit, or underscore
 Start menu      // space is not a letter, digit, or underscore
 #+end_src
 
-ومتنفعش هنا بمعني ان الcompiler مش هيرضي يعرفهم كأسماء وهيطعلك error
+ومتنفعش هنا بمعني ان الcompiler مش هيرضي يعرفهم كأسماء وهيطعلك error.
+
+ولاحظ برضو ان الnames بتبقي case sensitive، بمعني انك تقدر تعمل variable اسمه one وvariable تاني اسمه One عادي، بس دي حاجه لا ينصح بيها، علي الرغم من انها مش هتلخبط الcompiler بس بسهوله هتلخبط المبرمج.
+
+في مجموعه من الnames في ال++C بيتقال عليها keywords، ودي بتبقي names اللغه بتستخدمها زي مثلا if, while, int, double وهكذا، لو جربت تستخدمهم هيطلعلك error:
+
+#+begin_src C++
+int if = 7;  // error: if is a keyword
+#+end_src
+
+بس تقدر تستخدم الnames بتاعه الحاجات اللي في الstandard library عادي، زي كدا مثلا:
+
+#+begin_src C++
+int string = 5;     // compiles, but will lead to trouble
+double cout = 2.4;  // compiles, but will lead to trouble
+#+end_src
+
+السبب في ده انك مش بتقوله ~std::string~ او ~std::cout~ بس مع ذلك لا ننصح بأنك تعمل دا علشان استخدامك لأسامي منتشره زي دي غالبا هيؤدي لerrors في باقي الكود.
 
  
