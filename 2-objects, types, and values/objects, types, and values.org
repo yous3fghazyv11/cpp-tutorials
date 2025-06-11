@@ -336,6 +336,9 @@ std::string current;
 
 #+begin_src C++
 while (std::cin >> current)
+{
+    // statements here
+}
 #+end_src
 
 الجمله دي بنسميها while-statement، مثيرة للاهتمام في حد ذاتها، وهنشرحها أكتر المحاضره الجايه علي طول.
