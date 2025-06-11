@@ -1,8 +1,8 @@
 # Basics of Programming in C++
 
 > [!NOTE]
-> The project is still under development
-![](https://geps.dev/progress/4)
+> The project is still under development  
+> ![](https://geps.dev/progress/4)
 
 
 Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
