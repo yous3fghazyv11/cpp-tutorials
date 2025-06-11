@@ -141,11 +141,11 @@ std::string name = 20;  // error: 20 is not a string
 عندنا في ال ++C في عدد كبير جدا من الprimitive types بتيجي مع اللغه، بس في الأول كدا خلينا نعرفك علي 5 بس منهم:
 
 #+begin_src C++
-int number_of_steps = 33;  // int for integer numbers
-double flying_time = 3.5;  // double for floating-point numbers
-char decimal_point = '.';  // char for individual characters
-string name = "yousef";    // string for character strings
-bool tap_on = true;        // bool for logical variables
+int number_of_steps = 33;     // int for integer numbers
+double flying_time = 3.5;     // double for floating-point numbers
+char decimal_point = '.';     // char for individual characters
+std::string name = "yousef";  // string for character strings
+bool tap_on = true;           // bool for logical variables
 #+end_src
 
 السبب في اسم =double= دا تاريخي شويه، double هنا معناها double-precision floating point، والfloating point هي طريقه الكمبيوتر في التعبير عن الأعداد الحقيقه.
@@ -176,6 +176,27 @@ int main()  // read name and age
 }
 #+end_src
 
+زي ما انت شايف نقدر اننا نقرأ كذا قيمه مره واحده زي ما نقدر نطبع كذا قيمه مره واحده.
+
 تعالي نجرب نلعب شويه مع البرنامج دا ونشوف هيتصرف ازاي في حالات مختلفه:
 
 [[../images/test_name_age.png]]
+
+زي ما انت شايف اول مره شغلناه، لما بنكتب "yousef 20" الopeartor =<<= بيقرأ "yousef" في =first_name= بعد كدا 20 في =age= ، طب ليه ميقرأش "yousef 20" كلها في =first_name= ؟ علشان قرائه الstrings بتنتهي بال whitespace، اللي هي الspace أو newline أو tab، انما غير كدا الwhitespaces في الطبيعي بيتم تجاهلها من قبل =<<= .
+
+جرب مثلا تدخله الinput دا: "       yousef          20        "، هتلاقيه بيقولك "hello, yousef age(20)" عادي منغير whitespaces
+
+بس لو جيت تكتب 20 وبعدها yousef بالشكل اللي انت شفته لما شغلنا البرنامج مره تانيه هتلاقيه قالك "hello, 20 (age 0)"، ليه؟ علشان هو هيقرأ 20 في =frist_name= عادي، لأن في الأول وفي الاخر "20" عباره عن سلسله من الحروف عادي ينفع تتقرأ في string، انما "yousef" مينفعش تتقرأ في int فمش هيعرف يقرأها في age، فبيحط 0 وبيشيل ال 44 اللي كانت موجوده.
+
+زي ما انت شفت، عمليه القرائه للstrings بتنتهي بالwhitespace بمعني انه مش هيعرف يقرأ غير كلمه واحده، بس افرض احنا عايزين نقرأ اكتر من كلمه؟ في طرق كتير تقدر تعمل بيها كدا، مثلا ممكن نقرأ اسم من كلمتين بالشكل دا:
+
+#+begin_src C++
+int main()
+{
+    cout << "Please enter your first and second names\n> ";
+    std::string first;
+    std::string second;
+    std::cin >> first >> second;   // read two strings
+    std::cout << "Hello, " << first << " " << second << '\n';
+}
+#+end_src
