@@ -325,4 +325,25 @@ int main()
 }
 #+end_src
 
-تعالي نبص علي البرنامج دا سطر سطر
+تعالي نبص علي البرنامج دا سطر سطر ونحاول نفهم هو بيعمل ايه.
+
+#+begin_src C++
+std::string previous;
+std::string current;
+#+end_src
+
+اول حاجه هتلاحظ اننا زي ما قلنا مفيش initializer للstrings علشان هما by default بيتعملهم default initialization لempty string او ""
+
+#+begin_src C++
+while (std::cin >> current)
+#+end_src
+
+الجمله دي بنسميها while-statement، مثيرة للاهتمام في حد ذاتها، وهنشرحها أكتر المحاضره الجايه علي طول.
+
+الـ while معناها إن السطر اللي بعد =std::cin >> current= هيتكرر طالما عملية الinput بتاعه =cin >> current= بتنجح، و =std::cin >> current= هتنجح طالما فيه حروف لسه ممكن تتقري من الـ standard input.
+
+افتكر إن في حالة string، الـ =<<= بتقرا كلمات مفصولة بمسافات.
+بتنهي الـ loop دي عن طريق إنك تدي للبرنامج end-of-input character (اللي غالبًا بيتقال عليه end of file).
+
+على Windows، ده بيكون بالضغط على Ctrl+Z وبعدها Enter.
+أما على Linux، فبيكون بالضغط على Ctrl+D.
