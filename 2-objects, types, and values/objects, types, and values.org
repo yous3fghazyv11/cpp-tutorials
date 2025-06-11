@@ -193,7 +193,7 @@ int main()  // read name and age
 #+begin_src C++
 int main()
 {
-    cout << "Please enter your first and second names\n> ";
+    std::cout << "Please enter your first and second names\n> ";
     std::string first;
     std::string second;
     std::cin >> first >> second;   // read two strings
@@ -215,3 +215,71 @@ std::string second = "";  // initialized to "" or empty string
  *مثال ليك:*
 جرب تكتب برنامج ال name وال age بتاعنا دا، وعدله بحيث انه يطبع العمر بالشهور، يعني لو شخص دخل عمره 20 سنه يقوله انه عمره 240 شهر، فانت كدا هتحتاج تضرب العمر في 12، واستخدم double بدل int علشان الأطفال اللي ممكن بكل فخر يبقي عمرهم 6 سنين ونص.
 -----------------------
+
+** العمليات والOperators
+بالأضافه للقيم اللي ينفع نحطها في الvariable، نوع الvariable ايضا بيحدد العمليات اللي نقدر نعملها عليه ومعناها ايه، علي سبيل المثال:
+
+#+begin_src C++
+int age = -1;
+std::cin >> age;                  // >> reads an integer into age
+std::string name;
+std::cin >> name;                 // >> reads a string into name
+int a2 = age + 2;            // + adds integers
+std::string n2 = name + " Jr. ";  // + concatenates strings
+int a3 = age - 2;            // - subtracts integers
+std::string n3 = name - " Jr. ";  // error: - isn’t defined for strings
+#+end_src
+
+لما نقول error فاحنا قصدنا ان ال compiler مش هيرض يcompile البرنامج دا وهيطلعلك error ان الoperator =-= مش متعرف لل strings، الcompiler عارف كويس ايه العمليات اللي تنفع علي المتغيرات من النوع الفلاني
+
+تعالي مثلا نشوف بعض ال operations اللي ممكن تتعمل علي الfloating-point numbers من النوع double:
+
+#+begin_src C++
+#include <cmath>
+
+int main()          // simple program to exercise operators
+{
+    std::cout << "Please enter a floating−point value: ";
+    double n = 0;
+    std::cin >> n;
+    std::cout << "n == " << n
+         << "\nn+1 == " << n+1
+         << "\nthree times n == " << 3*n
+         << "\ntwice n == " << n+n
+         << "\nn squared == " << n*n
+         << "\nhalf of n == " << n/2
+         << "\nsquare root of n == " << std::sqrt(n)
+         << '\n';
+}
+#+end_src
+
+طبعًا، العمليات الحسابية العادية ليها نفس الشكل والمعنى اللي اتعلمناه في المدرسة. الاستثناء الوحيد هو إن علامة المساواة بتكون ==== مش =، لأن ==== في البرمجة معناها "assignment" او انك تعين قيمه للمتغير او الvariable مش مقارنة. يعني بنستخدمها عشان نحط قيمة في متغير.
+
+طبيعي برضو إن مش كل حاجة ممكن نعملها على الأرقام (زي الجذر التربيعي مثلًا) تكون متاحة كـ"عملية مباشرة" باستخدام operator. عشان كده في عمليات اوoperations بنستخدم فيها functions ليها أسماء. في الحالة دي، لو عايزين نجيب الجذر التربيعي لعدد n، بنستخدم function اسمها sqrt من ال C++ standard library، علشان كدا اضطرينا نعمل include لheader file اسمه =cmath= وكتبنا قبلها =::std= ، وبنكتبها كده: =sqrt(n)= ، ودي طريقة معروفة في الرياضيات.
+
+-----------
+*مثال ليك*
+اكتب البرنامج الصغير ده وخليه يشتغل. بعد كده عدله عشان يقرأ عدد صحيح (int) بدل ما يقرأ عدد عشري (double). كمان جرب عليه شوية عمليات أو operations تانية، زي عملية باقي القسمة او ال modulo =%=. خد بالك إن لما بنشتغل بـ int، القسمة =/= بتكون قسمة عددية صحيحة، يعني النتيجة من غير كسور، و =%= معناها الباقي بعد القسمة.
+
+يعني مثلًا:
+=5 / 2= نتيجتها 2 (مش 2.5 ولا 3)
+و =5 % 2= نتيجتها 1
+-----------
+
+ال strings ليهم عدد اقل من ال operations بس زي ما هنشوف بعد كدا ان ليهم كتير من ال operations علي شكل functions. بس الoperations اللي بتتعمل عليهم باستخدام operator بتبقي نوعا ما سهله ومنطقيه، زي كدا مثلا:
+
+#+begin_src C++
+int main()  // read first and second name
+{
+    std::cout << "Please enter your first and second names\n";
+    std::string first;
+    std::string second;
+    std::cin >> first >> second;              // read two strings
+    std::string name = first + ' ' + second;  // concatenate strings
+    std::cout << "Hello, " << name << '\n';
+}
+#+end_src
+
+في حاله الstrings ال =+= معناها concatenation، يعني لو s1 و s2 دول two strings، فا =s1 + s2= معناها ان الحروف بتاعه s2 هتكمل بعد الحروف بتاعه s1
+
+** الassignment والinitialization
