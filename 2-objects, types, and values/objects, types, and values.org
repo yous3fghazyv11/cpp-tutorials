@@ -307,3 +307,22 @@ int main()  // read first and second name
 طبعًا في الmemory الموضوع مش بالتبسيط المخل دا، بس دي طريقة كويسة تساعدك تتخيل اللي بيحصل.
 
 *** مثال: detect repeated words
+لو تلاحظ هتلاقي الassignment بتبقي مفيده اكتر حاجه لما نبقي عايزين نغير قيمه نفس الvariable كذا مره، تعالي مثلا نبص علي البرنامج دا اللي بيdetect الكلمات المتكرره:
+
+#+begin_src C++
+int main()
+{
+    std::string previous;
+	std::string current;
+	while (std::cin >> current)
+	{
+		if (current == previous)
+		{
+			std::cout << "word: " << current << " repeated\n";
+		}
+		previous = current;
+	}
+}
+#+end_src
+
+تعالي نبص علي البرنامج دا سطر سطر
