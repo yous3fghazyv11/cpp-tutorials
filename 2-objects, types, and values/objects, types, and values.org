@@ -123,7 +123,7 @@ std::string name = "yousef";
 int number_of_steps = 33;
 #+end_src
 
-القيمه اللي بتيجي بعد علامه اليساوي === بيتقال عليها initilazier او قيمه ابتدائيه.
+القيمه اللي بتيجي بعد علامه اليساوي === بيتقال عليها initializer او قيمه ابتدائيه.
 
 تقدر تتخيل الvariables دي كobjects في ال memory بالشكل دا:
 
@@ -211,3 +211,5 @@ std::string second = "";  // initialized to "" or empty string
 // so basically both are the same
 #+end_src
 
+**مثال ليك**
+جرب تكتب برنامج ال name وال age بتاعنا دا، وعدله بحيث انه يطبع العمر بالشهور، يعني لو شخص دخل عمره 20 سنه يقوله انه عمره 240 شهر، فانت كدا هتحتاج تضرب العمر في 12، واستخدم double بدل int علشان الأطفال اللي ممكن بكل فخر يبقي عمرهم 6 سنين ونص.
