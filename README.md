@@ -1,6 +1,7 @@
 # Basics of Programming in C++
 
-> ⚠️ **Warning:** **The project is still under development**
+> [!NOTE]
+> **The project is still under development**
 
 Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
 
