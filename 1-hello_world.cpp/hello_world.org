@@ -161,8 +161,8 @@ print("Hello, World!")
 #+begin_src C++
 int main()
 {
-	std::cout << "Hello, World!\n";
-	return 0;
+    std::cout << "Hello, World!\n";
+    return 0;
 }
 #+end_src
 
@@ -181,8 +181,8 @@ int main()
 #+begin_src C++
 int main()
 {
-	std::cout << "Hello, World!\n";
-	return 1;
+    std::cout << "Hello, World!\n";
+    return 1;
 }
 #+end_src
 
@@ -240,7 +240,7 @@ int main()
 
 int main()
 {
-    cout << "Hello, World!\n";
+    std::cout << "Hello, World!\n";
     return 0;
 }
 #+end_src

@@ -18,7 +18,7 @@
 #+begin_src text
 return_type func_name(parameters_list)
 {
-	function body
+    function body
 }
 #+end_src
 
@@ -30,8 +30,8 @@ return_type func_name(parameters_list)
 #+begin_src C++
 int f(int x)
 {
-	std::cout << "function f() executed";
-	return x * x;
+    std::cout << "function f() executed";
+    return x * x;
 }
 #+end_src
 
@@ -44,14 +44,14 @@ int f(int x)
 
 int f(int x)
 {
-	std::cout << "function f() executed";
-	return x * x;
+    std::cout << "function f() executed";
+    return x * x;
 }
 
 int main()
 {
-	std:: cout << f(3);
-	return 0;
+    std:: cout << f(3);
+    return 0;
 }
 #+end_src
 
@@ -65,14 +65,14 @@ int main()
 
 std::string add(std::string name)
 {
-	std::cout << "function add() executed";
-	return "hello, " + name + " how are you doing today?";
+    std::cout << "function add() executed";
+    return "hello, " + name + " how are you doing today?";
 }
 
 int main()
 {
-	std::cout << add("yousef");
-	return 0;
+    std::cout << add("yousef");
+    return 0;
 }
 #+end_src
 
@@ -91,21 +91,21 @@ int main()
 
 std::string add(std::string name)
 {
-	std::cout << "function add() executed\n";
-	return "hello, " + name + " how are you doing today?";
+    std::cout << "function add() executed\n";
+    return "hello, " + name + " how are you doing today?";
 }
 
 int f(int x)
 {
-	std::cout << "function f() executed\n";
-	return x * x;
+    std::cout << "function f() executed\n";
+    return x * x;
 }
 
 int main()
 {
-	std:: cout << f(3) << '\n';
-	std::cout << add("yousef") << '\n';
-	return 0;
+    std:: cout << f(3) << '\n';
+    std::cout << add("yousef") << '\n';
+    return 0;
 }
 #+end_src
 
