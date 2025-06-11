@@ -53,7 +53,7 @@ int age;
 std::cin >> age;
 #+end_src
 
-السطر دا بياخد input من ال standar input stream (الkeybaord في الترمينال) عن طريق object الcin وده object من الistream او الinput stream وبيحطه في المتغير age عن طريق الoperator =<<= واللي اسمه *get from*
+السطر دا بياخد input من ال standard input stream (الkeybaord في الترمينال) عن طريق object الcin وده object من الistream او الinput stream وبيحطه في المتغير age عن طريق الoperator =<<= واللي اسمه *get from*
 
 يعني نقدر نقول ان السطر دا بيتقرأ: get input from the standard input stream using cin which is in the standard library and put it in the age variable.
 
@@ -200,3 +200,14 @@ int main()
     std::cout << "Hello, " << first << " " << second << '\n';
 }
 #+end_src
+
+ببساطه بنستخدم =<<= مرتين لكل اسم، ولو عايزين نطبع الأسامي دي لازم نحط مسافه بينهم.
+
+لاحظ ان مفيش initializer للtwo variables بتوعنا =first= و =second= مع اننا قلنا ان المفروض دايما نحط initializers، وده لأن by default الstrings بيتعملها initialization ل empty string، بمعني ان:
+
+#+begin_src C++
+std::string first;	      // initialized to "" or empty string
+std::string second = "";  // initialized to "" or empty string
+// so basically both are the same
+#+end_src
+
