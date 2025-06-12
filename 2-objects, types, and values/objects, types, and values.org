@@ -1,4 +1,4 @@
-#+TITLE: الobjects, الtypes, الvalues
+#+TITLE: الobjects, الtypes والvalues
 #+AUTHOR: Yousef Ghazy
 #+DESCRIPTION: Objects, types and values
 #+STARTUP: showeverything
