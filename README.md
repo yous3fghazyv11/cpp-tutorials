@@ -24,11 +24,11 @@ Images used in the `.org` files will live in the images directory, links from `.
 > If you want to get the maximum value of the course.
 
 > [!Note]  
-> **Why i didn't post the solutions?**
+> **Why i didn't post the solutions?**  
 > Even a little peek at the solution can ruin the whole idea of the exercise for you,
 > and as a learner myself, i know that it gets very hard to resist peeking at the solution
 > specially when the problem is hard.
-> **What if I'm stuck and i really need help?**
+> **What if I'm stuck and i really need help?**  
 > Use the issues section to raise an issue, i will help you ^_^
 
 If you run into any issues, please don’t hesitate to open an issue or a pull request.  
