@@ -22,6 +22,7 @@ Images used in the `.org` files will live in the images directory, links from `.
 > [!Warning]  
 > When following along with course, please don't skip any drills or exercises or review questions.  
 > If you want to get the maximum value of the course.
+
 > [!Note]  
 > **Why i didn't post the solutions?**
 > Even a little peek at the solution can ruin the whole idea of the exercise for you,
