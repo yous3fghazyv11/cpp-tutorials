@@ -1,9 +1,10 @@
-#+TITLE: البيانات في ++C
+#+TITLE: البيانات أو ال Data وال Data Types في ++C
 #+AUTHOR: Yousef Ghazy
 #+DESCRIPTION: Objects, types and values
 #+STARTUP: showeverything
 #+OPTIONS: toc:2
 
+المحاضره دي هتشرح انواع البيانات في ال ++C ال Data Types وازاي ناخد data من ال standard input stream او الkeyboard ونفهم يعني ايه data و data types و objects و values و variables
 * الفهرس :toc:
 - [[#ازاي-ناخد-input][ازاي ناخد input؟]]
 - [[#الvariables][الvariables]]
