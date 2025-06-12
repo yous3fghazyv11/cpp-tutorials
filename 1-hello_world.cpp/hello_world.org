@@ -316,7 +316,7 @@ integer main()
 
 وبشكل عام:
 
-الerrors اللي بيكتشفها الcompiler أسهل في الفهم والإصلاح من أخطاء الlinker.
+الerrors اللي بيكتشفها الcompiler أسهل في الفهم والإصلاح من الerrors اللي بيلاقيها الlinker.
 
 وerrors الlinker أسهل من الRun-Time errors
 
