@@ -1,4 +1,4 @@
-#+TITLE: أول برنامج في ال ++C
+#+TITLE: Hello, World!
 #+AUTHOR: Yousef Ghazy
 #+DESCRIPTION: hello world in C++
 #+OPTIONS: toc:2

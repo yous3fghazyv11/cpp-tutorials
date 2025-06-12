@@ -1,4 +1,4 @@
-#+TITLE: البيانات أو ال Data وال Data Types في ++C
+#+TITLE: Objects, Types and values in C++
 #+AUTHOR: Yousef Ghazy
 #+DESCRIPTION: Objects, types and values
 #+OPTIONS: toc:2
