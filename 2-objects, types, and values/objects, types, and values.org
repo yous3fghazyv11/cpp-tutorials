@@ -1,11 +1,10 @@
-#+TITLE: الobjects, الtypes والvalues
+#+TITLE: البيانات في ++C
 #+AUTHOR: Yousef Ghazy
 #+DESCRIPTION: Objects, types and values
 #+STARTUP: showeverything
 #+OPTIONS: toc:2
 
 * الفهرس :toc:
-- [[#البيانات-في-ال-c][البيانات في ال ++C]]
 - [[#ازاي-ناخد-input][ازاي ناخد input؟]]
 - [[#الvariables][الvariables]]
 - [[#الinput-مع-الtypes][الinput مع الtypes]]
@@ -18,9 +17,6 @@
 - [[#الtypes-والobjects][الtypes والobjects]]
 - [[#الtype-safety][الtype safety]]
 - [[#الconversions][الconversions]]
-
-* البيانات في ال ++C
-المحاضره دي هتشرح انواع البيانات في ال ++C ال Data Types وازاي ناخد data من ال standard input stream او الkeyboard ونفهم يعني ايه data و data types و objects و values و variables
 
 * ازاي ناخد input؟
 لحد الان كل اللي برنامج hello_world بتاعنا بيعمله انه بيطبع "!Hello, World" بس، مش بيعمل اي حاجه تاني، مش مش بيقرأ اي حاجه، مش بياخد input من اليوزر، زي ما انت شايف كدا الموضوع ممل شويه، البرامج الحقيقيه معظم الوقت بتعمل حاجه مختلفه علي حسب الinput اللي بتديهولها، بدل من انها مجرد بتعمل نفس الشئ مرارا وتكرارا كل مره تشغل البرنامج فيها
