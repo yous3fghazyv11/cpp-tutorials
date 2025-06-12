@@ -758,9 +758,9 @@ Keep a list of what mistakes you make so that you can try to avoid those in the 
 - [6] What terminates input into a string?
 - [7] What terminates input into an integer?
 - [8] How would you write the following as a single line of code:
-  + cout << "Hello, ";
-  + cout << first_name;
-  + cout << "!\n";
+  + ~cout << "Hello, ";~
+  + ~cout << first_name;~
+  + ~cout << "!\n";~
 - [9] What is an object?
 - [10] What is a literal?
 - [11] What kinds of literals are there?
@@ -773,17 +773,17 @@ Keep a list of what mistakes you make so that you can try to avoid those in the 
 - [18] What is string concatenation and how do you make it work in C++?
 - [19] What operators can you apply to an int?
 - [20] Which of the following are legal names in C++? If a name is not legal, why not?
-  + This_little_pig 
-  + This_1_is fine 
-  + 2_For_1_special
-  + latest thing
-  + George@home 
-  + _this_is_ok
-  + MineMineMine 
-  + number
-  + correct? 
-  + stroustrup.com 
-  + $PATH
+  + ~This_little_pig~
+  + ~This_1_is fine~
+  + ~2_For_1_special~
+  + ~latest thing~
+  + ~George@home~
+  + ~_this_is_ok~
+  + ~MineMineMine~
+  + ~number~
+  + ~correct?~
+  + ~stroustrup.com~
+  + ~$PATH~
 - [21] Give five examples of legal names that you shouldn’t use because they are likely to cause confusion.
 - [22] What are some good rules for choosing names?
 - [23] What is type safety and why is it important?
