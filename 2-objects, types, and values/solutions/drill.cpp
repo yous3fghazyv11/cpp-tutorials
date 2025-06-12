@@ -22,10 +22,14 @@ int main() {
     // if (age < 12)
     //     std::cout << "Next year you will be " << age + 1;
     // this executes at any number below 12, this will lead to trouble
-    if (age < 12 && age > 0)
-        std::cout << "Next year you will be " << age + 1 << '\n';
-    // this works, check that the numbers is both less thatn 12 and bigger than
-    // 0, && means and
+	// because it will aslo execute if the number is 0 or less
+    if (age < 12)
+	{
+		if (age > 0)
+			std::cout << "Next year you will be " << age + 1 << '\n';
+	}
+    // this works, we check that the number is both less than 12 and bigger-
+	// than 0, we will see in the next lecture how we can do this using only one if-statement
     if (age == 17)
         std::cout << "Next year you will be able to vote!\n";
     if (age > 70)

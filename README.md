@@ -15,15 +15,20 @@ The code in this repository is a supplement to my [YouTube tutorials](https://ww
 
 Each directory in this repo corresponds to a YouTube video and contains the `.org` file featured in that video, which includes the full tutorial.
 
-You’ll also find a few subdirectories with solutions to drills and exercises along with header files if any are used  
+You may also find few sub directories with with header files if any are used in the lecture.  
 
 Images used in the `.org` files will live in the images directory, links from `.org` files will refer to them.
 
-> [!WARNING]  
-> The solutions are meant only for comparison with your own work.  
-> Please don’t use them as a shortcut to the answers for drills, exercises, etc.  
-> If you want to get the maximum benefit from the course, try to solve everything on your own first.  
-> Then, use the solutions only to check whether your answers match mine.
+> [!Warning]  
+> When following along with course, please don't skip any drills or exercises or review questions.  
+> If you want to get the maximum value of the course.
+> [!Note]  
+> **Why i didn't post the solutions?**
+> Even a little peek at the solution can ruin the whole idea of the exercise for you,
+> and as a learner myself, i know that it gets very hard to resist peeking at the solution
+> specially when the problem is hard.
+> **What if I'm stuck and i really need help?**
+> Use the issues section to raise an issue, i will help you ^_^
 
 If you run into any issues, please don’t hesitate to open an issue or a pull request.  
 That’s it — enjoy! :)
