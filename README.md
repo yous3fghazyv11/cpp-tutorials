@@ -20,8 +20,8 @@ You may also find few sub directories with with header files if any are used in 
 Images used in the `.org` files will live in the images directory, links from `.org` files will refer to them.
 
 > [!Warning]  
-> When following along with course, please don't skip any drills or exercises or review questions.  
-> If you want to get the maximum value of the course.
+> When following along with course, please don't skip any drills or exercises or review questions,  
+> that is if you want to get the maximum benefit of the course.
 
 > [!Note]  
 > **Why i didn't post the solutions?**  
