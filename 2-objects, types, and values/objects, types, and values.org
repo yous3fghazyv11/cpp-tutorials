@@ -1,7 +1,6 @@
 #+TITLE: البيانات أو ال Data وال Data Types في ++C
 #+AUTHOR: Yousef Ghazy
 #+DESCRIPTION: Objects, types and values
-#+STARTUP: showeverything
 #+OPTIONS: toc:2
 
 المحاضره دي هتشرح انواع البيانات في ال ++C ال Data Types وازاي ناخد data من ال standard input stream او الkeyboard ونفهم يعني ايه data و data types و objects و values و variables
@@ -18,6 +17,7 @@
 - [[#الtypes-والobjects][الtypes والobjects]]
 - [[#الtype-safety][الtype safety]]
 - [[#الconversions][الconversions]]
+- [[#الdrill][الDrill]]
 
 * ازاي ناخد input؟
 لحد الان كل اللي برنامج hello_world بتاعنا بيعمله انه بيطبع "!Hello, World" بس، مش بيعمل اي حاجه تاني، مش مش بيقرأ اي حاجه، مش بياخد input من اليوزر، زي ما انت شايف كدا الموضوع ممل شويه، البرامج الحقيقيه معظم الوقت بتعمل حاجه مختلفه علي حسب الinput اللي بتديهولها، بدل من انها مجرد بتعمل نفس الشئ مرارا وتكرارا كل مره تشغل البرنامج فيها
@@ -630,4 +630,96 @@ std::cout << "y: " << y << ", z: " << z << '\n';
 عاده الcompiler يقدر يطلعلك warning messages للحاجات اللي شبه كدا تقدر تشغلها ب =Wall-= 
 
 * الconversions
+نقدر نحول من نوع لنوع تاني في عمليه تسمي بالimplicit casting بالشكل دا:
 
+#+begin_src C++
+char c = 'x';
+int i1 = c;           // i1 gets the integer value of c (120)
+int i2 = c + 1000;    // i2 gets the integer value of c added to 1000 (1120)
+double d = i2 + 7.3;  // d gets the floating-point value of i2 plus 7.3 (1127.3)
+#+end_src
+
+هنا =i1= هتبقي ب 120، ودي الinteger value بتاعه 'x' في ال ascii table، تقدر تعمل دا مع اي حرف علشان تجيب الnumeric representation بتاعه.
+
+علشان بقا نجيب الvalue بتاعه =i2= احنا هنعمل normal arithmetic ونجمع two integers، بس ثانيه، =c= مش integer دي char، علشان كدا قبل ما هنعمل عمليه الجمع احنا هنحول او هنpromote او هنconvert ال =c= ل =int= قبل ما نعمل الجمع.
+
+وكذلك علشان نجيب القيمه بتاعه =d= ونجمع بين floating-point value و integer value هنpromote الinteger value اللي هي في الحاله دي =i2= لdouble ودا هيطلعلنا النتيجه 1127.3
+
+الconversions عندنا ليها نوعين:
++ الwidening: ودي لما بنconvert من حاجه صغيره زي char لحاجه اكبر منها زي int او من int ل double مثلا
++ الnarrowing: ودي لما بنconvert من حاجه كبيره زي int لحاجه اصغر زي char او من double ل int وغالبا هينتج عنها نقص في الداتا
+
+
+ال widening conversions مفيده لحد كبير زي ما شفنا في المثال اللي فوق، وزي ما انت شفت، ساعات كتير بتحصل بشكل implicit او ال ++C بتعملها behind the scenes ومحتجناش اننا بنفسنا نقوله يحول من int مثلا لdouble قبل ما يجمع.
+
+ال narrowing conversions بقا علي الصعيد الأخر مش مفيده ومعظم الوقت بتؤدي لفقد في الداتا، وللأسف ال++C برضو ساعات بتعملها بشكل implicit، ولما بنقول narrowing معناها انك بتحاول تحول من نوع لنوع اصغر منه وده ممكن يؤدي لفقد في الداتا، تخيل معايا مثلا انك عندك كوبايه كبيره فيها ميه وبتحاول تصب منها في كوبايه اصغر، الكوبايه الصغيره هتتملي وفي ميه كتير هتدلق، نفس الفكره عندنا هنا لما تيجي تحول من نوع كبير او بياخد مساحه كبيره في الmemory لنوع بياخد مساحه اصغر
+
+تخيل معايا مثلا التحويل من int ل char:
+
+زي ما شفنا في المثال بتاعه ال sizeof، الint بياخد مساحه 4 bytes من الmemory، والchar بياخد 1 byte.
+
+[[../images/int_char_size.png]]
+
+ال1 byte بتاع الchar دا يقدر يخزن قيم من اول 128- لحد 127 أو من 0 ل 255 علي حسب الimplementation، علي عكس ال4 bytes بتوع الint اللي ممكن يخزنوا من اول 2,147,483,648- لحد 2,147,483,647.
+
+مينفعش نحط رقم كبير زي 321 في char، رقم زي دا ممكن يتحط في int عادي، بس الchar اخره بالكتير 127 او 255 علي حسب الcompiler، والتحويله دي بتؤدي لحاجه بنقول عليها overflow
+
+يعني مثلا لو جربت انك تحط 321 في variable من نوع char هيطلعلك output انت ممكن متتوقعوش، هيطلعلك حرف 'A'، بس ازاي؟ ال A في الascii table الnumeric representation بتاعها 65 مش 321!
+
+#+begin_src C++
+int x = 321;
+char y = x;
+std::cout << "the value of y: " << y << '\n';
+#+end_src
+
+[[../images/int_to_char.png]]
+
+بص هو الموضوع دا صعب شويه شرحه من غير ما ننزل لتفاصيل low level شويه، بس تقدر تتخيل ان لما بتحط رقم زي 321 في variable من نوع char، بيوصل ل255 وبعد كدا بيبدأ يعد من الأول، فمثلا 256 لو حطيتها في variable من نوع char هتقلب 0، و257 هتبقي 1 وهكذا، وتقدر تتنبأ بده باستخدام الmodule operator، مثلا 321 دي نقدر نشوف هتبقي بكام لو اتحطت في char بالمعادله دي ~c = (int % 255) - 1~ والواحد ده علشان هي بتبدأ تعد من الصفر، بدل الواحد، فمثلا لو بدلنا int دي ب321 هيطلعلك c ب 65 وده اللي بيخليه يطبعلك 'A'
+
+علشان كدا بيتقال عليها narrowing conversion لأن زي ما انت شايف علشان نقدر نحول من int لchar خليناها بدل 321 ل 65، وللأسف برضو زي ما انت شايف الcompiler بيعمل دا عادي، ليه دي مشكله؟ لأن في اوقات كتير احنا اصلا مش بنبقي واخدين بالنا ان في narrowing conversion بتحصل، علي سبيل المثال بص دي:
+
+#+begin_src C++
+double x = 2.7;
+// lots of code....
+int y = x;  // y becomes 2
+#+end_src
+
+في الوقت اللي عملنا فيه assign ل x في y، ممكن نكون نسينا ان x دي كانت double وان ال assignment دي هينتج عنها truncation، والtruncation معناه انه هيشيل اي حاجه بعد الفاصله تماما، بدل ما يقربها لأقرب عدد صحيح، اللي حصل دا شيئ well-defined في الstandard، بس المشكله ان مفيش حاجه في العمليه بتاعه ~int y = x~ دي يفكرنا ان ال 7. دي هتتشال.
+
+ليه الناس بتتقبل مشكلة الـnarrowing conversions؟ السبب الرئيسي هو التاريخ:
+
+ال++C ورثت الـnarrowing conversions من اللغة اللي جاية منها، اللي هي C، فمن أول يوم ظهرت فيه C++، كان فيه كود كتير معتمد على الـnarrowing conversions.
+
+وكمان، كتير من التحويلات دي في الحقيقة ما بتعملش مشاكل، لأن القيم اللي بتتحول غالبًا بتكون جوه الـrange المسموح،
+
+وكمان فيه مبرمجين كتير مش بيحبوا إن الـcompiler "يقولهم يعملوا إيه".
+
+خصوصًا إن المشاكل اللي بتحصل من الـnarrowing conversions بتكون تحت السيطرة لو البرنامج صغير أو المبرمج عنده خبرة. بس في البرامج الكبيرة، الموضوع ممكن يسبب أخطاء كتير، وبالنسبة للمبتدئين، بيكون سبب رئيسي للمشاكل.
+
+الحلو إن فيه كمبايلرات بتطلع warnings عن الـnarrowing conversions – وكتير منها بيعمل كده فعلًا. اسمع كلام الـcompiler لما يحذرك.
+
+ولأسباب تاريخية وعملية، ++C بتوفر 4 طرق لكتابة الـinitialization.
+
+#+begin_src C++
+int x0 = 7.8;    // narrows, some compilers warn
+int x1 {7.8};    // error : {} doesn’t narrow
+int x2 = {7.8};  // error : ={} doesn’t narrow (the redundant = is allowed)
+int x3 (7.8);    // narrows, some compilers warn
+#+end_src
+
+الـ ~=~ و ~{} =~ كانوا موجودين من أيام الC.
+إحنا بنستخدم ~=~ لما الinitialization يكون بسيط وبينسخ الinitializer او القيمه المبدئيه.
+وبنستخدم ~{}~ أو ~{} =~ لما الinitialization يبقي معقد شوية أو لما نحب الـcompiler يمنع الـnarrowing في وقت الcompile-time.
+
+#+begin_src C++
+int x = 7;
+double d = 7.7;
+std::string s = "Hello, World\n";
+
+std::vector v = {1, 2, 3, 5, 8 }; // will explain this in future lectures
+std::pair p {"Hello",17}; // will explain this in future lectures
+#+end_src
+
+اما بالنسبه للinitialization بال ~()~ فده احنا بنستخدمه في حالات محدده جدا
+
+* الDrill
