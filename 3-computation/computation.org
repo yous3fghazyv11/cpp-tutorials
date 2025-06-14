@@ -188,3 +188,43 @@ int perimeter = length + width * 2; // add width * 2 to length
 اخر ايرور دا بيتقال عليه logical error، بمعني ان الcompiler هيcompile عادي والlinker هي link عادي بس البرنامج مش هيعمل المطلوب منه، وده بسبب غلطه منطقيه انت عملتها في الكود، وغالبا الerrors دي بتكون اصعب errors انك تكتشفها وتصلحها. علشان كدا القاعده في حوار الexpressions دا تحديدا انك لو قلقان، حط اقواس. بس في نفس الوقت حاول تتعلم بقدر الامكان عن الoperator presence بحيث انك تقلل الأقواس عندك في الكود لأن كتير الأقواس بيقلل الreadability بتاعه الكود بتاعك.
 
 * الconstant expressions
+البرامج معظم الوقت بتستخدم ثوابت كتير، وهنا كلمه ثوابت معناها قيم ثابته مش بتتغير علي مدار البرنامج علي عكس المتغيرات، علي سبيل المثال، برنامج هندسي هتلاقيه بيستخدم pi او ثابت بيحول من mile لkilometer واللي غالبا هيبقي حاجه زي 1.609، طبعا احنا هنبقي عايزين اسامي للكلام دا، زي ما قلنا pi مقلناش 3.14159، كذلك مش هقعد كل شويه في الكود اكتب الأرقام دي، وبرضو زي ما انت شايف pi عمرها ما هتتغير، فاحنا عايزين طريقه نقدر بيها نعرف اسم جديد مثلا للبرنامج يبقي pi ويبقي فيه القيمه 3.14159 ومتتغيرش ابدا علي مدار البرنامج، علشان كدا ال++C فيها مفهوم الsymbolic constant وده باختصار named object متقدرش تغير قيمته بعد الinitialization، زي كدا مثلا:
+
+#+begin_src C++
+constexpr double PI = 3.14159;
+PI = 7; // error : assignment to constant
+double c = 2 * PI * r; // OK: we just read pi; we don’t try to change it
+#+end_src
+
+هنا بيتقال علي PI دي symbolic constant، وزي ما انت شايف بنعرفاه بالkeyword بتاعتنا =constexpr= ولاحظ برضو ان PI هنا uppercase بمعني ان كل حروفها capital، دا مش ضروري علشان تعمل symbolic constant. بس دا style الC++ developers تبنوه علشان لما تشوف اسم في الكود كل حروفه كابيتال تعرف ان دا symbolic constant.
+
+الsymbolic constants دي مهمه جدا علشان تخلي الكود بتاعك readable، انت ممكن تكون خدت بالك ان 3.14159 دي تقريب ل pi، بس هل كنت هتعرف حاجه زي مثلا 299792458؟ وبرضو لو حد قالك اننا عايزين نغير الكود علشان يستخدم pi ب12 رقم بدل 6 بس، هل هتعدل الرقم في كل مكان عندك في الكود؟ اكيد هيبقي اسهل بكتير انك بس تعمل كدا:
+
+#+begin_src C++
+constexpr double pi = 3.14159265359;
+#+end_src
+
+علشان كدا احنا بنحاول علي قد ما نقدر اننا نقلل استخدام الliterals في الكود بتاعنا علي قد ما نقد (الا طبعا لو بنعرف بيهم constants)، الliterals برا الdefinition of constants بيتقال عليهم *magic numbers*
+
+وبالمناسبه 299792458 دا ثابت كوني، سرعه الضوء في الفراغ متقاسه بالمتر علي الثانيه، لو انت مقدرتش تعرف دا لحظيا، ليه متوقع انك ممكن متتلخبطش من literals كتير مدموجه في الكود بتاعك؟ تجنب الmagic constants!
+
+ال =constexpr= لازم يتعرفله قيمه محدده وقت الcompile time، بمعني انك لو عندك =constexpr= في الكود بتاعك وجيت تcompile والcompiler مقدرش انه يحدد قيمته ايه وقت الcompilation هيطلعلك error:
+
+#+begin_src C++
+constexpr int MAX = 100;
+int n;
+std::cin >> n; // value of n is only aquired at runtime
+constexpr int C1 = MAX + 7; // OK: c1 is 107
+constexpr int C2 = n + 7; // error : we don’t know the value of n until runtime
+#+end_src
+
+انما لو عندك حاله انت عايز تعمل فيها constant بيتعمله initialization بvalue مش هتبقي معروفه في الcompile time، ال++C بتقدملك مفهوم للconstants اسمه =const=:
+
+#+begin_src C++
+int n;
+std::cin >> n;
+const int c3 = 3 + n; // this is ok
+c3 = 7; // error: c3 is a constant an cannot be reassigned
+#+end_src
+
+والنوع دا من الconstants مشهور جدا ومستخدم بكثره
