@@ -7,6 +7,8 @@
 * الفهرس :toc:
 - [[#الcomputation][الcomputation]]
 - [[#الهدف-والtools-اللي-بنستخدمها][الهدف والtools اللي بنستخدمها]]
+- [[#الexpressions][الexpressions]]
+- [[#الconstant-expressions][الconstant expressions]]
 
 * الcomputation
 احنا نوعا ما نقدر نقول ان كل اللي البرنامج بيعمله هو computation؛ يعني بياخد شوية inputs وبيطلع شوية output. في الآخر، إحنا بنسمي الجهاز اللي بيشغّل البرنامج ده computer.
@@ -135,3 +137,54 @@
 لو عندك طموح تبني حاجة كبيرة أو دائمة،
 لازم تهتم بهيكل الكود وتنظيمه من الأول،
 بدل ما تضطر تتعلمه بعد ما تقع.
+
+* الexpressions
+الexpressions هي ابسط building block في البرمجه، الexpression ببساطه بيحسب value من مجموعه من الoperands.
+
+ابسط expression عندنا هو ببساطه literal value زي مثلا 10 أو 'a' أو 3.14 او "Nora".
+
+اسامي الvariables ايضا تعتبر expressions، الvariable هو اسم بيشير لobject معين، يعني مجرد اسم لobject.
+
+علي سبيل المثال بص الكود دا:
+
+#+begin_src C++
+int length = 20; // 20 is a literal integer (used to initialize a variable)
+int width = 40;
+int area = length∗width; // a multiplication
+#+end_src
+
+هنا الliterals بتوعنا 20 و 40 بنستخدمهم علشان نعمل initialization للvariables اللي اسمهم length و width، وبعدها بنضربهم.
+
+بمعني اننا بنضرب القيم الموجوده في length بالقيمه اللي موجوده في width، هنا مثلا length ما هي الا اختصار ل: "القيمه اللي موجوده في الobject اللي اسمه length".
+
+وأيضا مثلا:
+
+#+begin_src C++
+length = 99; // assign 99 to length
+#+end_src
+
+هنا التعبير اللي علي شمال الassignment operator اللي هو length معناه: "الobject اللي اسمه length"، وده بيخلي عمليه الassignment دي تتقرأ: "حط 99 في الobject اللي اسمه length".
+
+فلاحظ الفرق بين معني length لما تستخدمها علي يمين الassignment operator وعلي شماله (as an lvalue and rvalue).
+
+نقدر نعمل expressions اكثر تعقيدا شويه باستخدام بعض الbinary operators اللي اتعودنا عليها زي + أو * وممكن لو احتاجنا نعملهم grouping باستخدام الاقواس:
+
+#+begin_src C++
+int perimeter = (length + width) ∗ 2; // add then multiply
+#+end_src
+
+بدون الأقواس هنضطر نقول:
+
+#+begin_src C++
+int perimeter = length * 2 + width * 2;
+#+end_src
+
+بمعني اننا هضرب كل واحد فيهم في اتنين الأول بعدها نعمل الجمع، دي basic arithmetic، بس لاحظ اننا كان ممكن نعمل الغلطه دي:
+
+#+begin_src C++
+int perimeter = length + width * 2; // add width * 2 to length
+#+end_src
+
+اخر ايرور دا بيتقال عليه logical error، بمعني ان الcompiler هيcompile عادي والlinker هي link عادي بس البرنامج مش هيعمل المطلوب منه، وده بسبب غلطه منطقيه انت عملتها في الكود، وغالبا الerrors دي بتكون اصعب errors انك تكتشفها وتصلحها. علشان كدا القاعده في حوار الexpressions دا تحديدا انك لو قلقان، حط اقواس. بس في نفس الوقت حاول تتعلم بقدر الامكان عن الoperator presence بحيث انك تقلل الأقواس عندك في الكود لأن كتير الأقواس بيقلل الreadability بتاعه الكود بتاعك.
+
+* الconstant expressions
