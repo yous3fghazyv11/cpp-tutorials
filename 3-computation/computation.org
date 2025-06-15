@@ -10,6 +10,8 @@
 - [[#الexpressions][الexpressions]]
 - [[#الconstant-expressions][الconstant expressions]]
 - [[#الoperators][الoperators]]
+- [[#الstatements][الStatements]]
+  - [[#الselection][الselection]]
 
 * الcomputation
 احنا نوعا ما نقدر نقول ان كل اللي البرنامج بيعمله هو computation؛ يعني بياخد شوية inputs وبيطلع شوية output. في الآخر، إحنا بنسمي الجهاز اللي بيشغّل البرنامج ده computer.
@@ -142,7 +144,7 @@
 * الexpressions
 الexpressions هي ابسط building block في البرمجه، الexpression ببساطه بيحسب value من مجموعه من الoperands.
 
-ابسط expression عندنا هو ببساطه literal value زي مثلا 10 أو 'a' أو 3.14 او "Nora".
+ابسط expression عندنا هو ببساطه literal value زي مثلا 10 أو 'a' أو 3.14 او "Nora". صحيح انه مش بيحسب value من مجموعه قيم بس هو في حد ذاته value.
 
 اسامي الvariables ايضا تعتبر expressions، الvariable هو اسم بيشير لobject معين، يعني مجرد اسم لobject.
 
@@ -154,7 +156,7 @@ int width = 40;
 int area = length∗width; // a multiplication
 #+end_src
 
-هنا الliterals بتوعنا 20 و 40 بنستخدمهم علشان نعمل initialization للvariables اللي اسمهم length و width، وبعدها بنضربهم.
+هنا الexpression مش الinitializatiojn، الinitialization بيتقال عليه statement، هنا الliterals بتوعنا 20 و 40 هم الexpressions. بنستخدمهم علشان نعمل initialization للvariables اللي اسمهم length و width، وبعدها بنضربهم.
 
 بمعني اننا بنضرب القيم الموجوده في length بالقيمه اللي موجوده في width، هنا مثلا length ما هي الا اختصار ل: "القيمه اللي موجوده في الobject اللي اسمه length".
 
@@ -164,9 +166,18 @@ int area = length∗width; // a multiplication
 length = 99; // assign 99 to length
 #+end_src
 
-هنا التعبير اللي علي شمال الassignment operator اللي هو length معناه: "الobject اللي اسمه length"، وده بيخلي عمليه الassignment دي تتقرأ: "حط 99 في الobject اللي اسمه length".
+هنا الexpression اللي علي شمال الassignment operator اللي هو length معناه: "الobject اللي اسمه length"، وده بيخلي عمليه الassignment دي تتقرأ: "حط 99 في الobject اللي اسمه length".
 
 فلاحظ الفرق بين معني length لما تستخدمها علي يمين الassignment operator وعلي شماله (as an lvalue and rvalue).
+
+الassignment تعتبر expression، ليه؟ علشان بتحسب قيمه من two operands + operator، الoperands هم الvariable والvalue اللي بنحطها فيه. والexpression دا بينتج قيمه الobject الجديده. مثلا:
+
+#+begin_src C++
+int a = 3;
+int b = 5 + (a = 7);
+std::cout << b << ", " << a << '\n';
+// will print 12, 7
+#+end_src
 
 نقدر نعمل expressions اكثر تعقيدا شويه باستخدام بعض الbinary operators اللي اتعودنا عليها زي + أو * وممكن لو احتاجنا نعملهم grouping باستخدام الاقواس:
 
@@ -267,3 +278,104 @@ std::cout << b << ", " << a << '\n'; // 8, 4
 نستخدم أي طريقه؟ وليه؟ إحنا بنفضّل أول واحده، اللي هي =a++= لأنها بتعبّر بشكل مباشر أكتر عن فكرة الزيادة (incrementing). هي بتقول إحنا عايزين نزود a بدل ما تقول احنا عايزين نجمع 1 على a وبعدين نكتب النتيجة في a. بشكل عام، الطريقة اللي بتعبّر عن فكرة بشكل مباشر أكتر في الكود بتكون أفضل من غيرها. حتي لو كان الoutput واحد بس الحاجه الreadability بتتحسن بكتير لما نختار expressions بتوضح الفكره اكتر.
 
 وبنفس الطريقة، إحنا بنفضّل a *= scale على a = a * scale.
+
+* الStatements
+لما بنكتب برنامج، الexpressions بتطلع قيمة باستخدام شوية حاجات زي الـ operators.
+طيب نعمل إيه بقى لو عايزين نرجّع كذا قيمة؟ أو نكرّر حاجة كذا مرة؟ أو نختار بين اختيارات علي حسب شروط معينه؟ أو ناخد input من الuser أو نطبع له حاجة؟
+
+في ++C، زي لغات برمجة كتير، بنستخدم حاجة اسمها statements علشان نعمل الحاجات دي.
+
+لحد دلوقتي، شفنا نوعين من الـ statements:
+- expression بينتهي بـ =;= (ده اسمه expression statement)
+- وتعريف variable أو function (ده اسمه declaration)
+
+يعني الـ expression statement هو ببساطة expression (زي =3+5= أو =x=7=) متبوع semicolon =;=.
+
+خد بالك إن ~=~ (الassignment operator) يعتبر operator (duh)، وعلشان كده a = b تعتبر expression.
+لكن علشان تخلي الexpression ده جملة (statement)، لازم تحط =;= في الآخر.
+طيب ليه لازم نحط الفاصلة المنقوطة؟ السبب تقني بشكل كبير.
+
+شوف المثال ده:
+
+#+begin_src C++
+a = b
+++c;
+#+end_src
+
+هنا هيحصل syntax error، لأن الcompiler مش فاهم تقصد إيه:
+
+هل تقصد:
+
+#+begin_src C++
+a = b; ++c;
+#+end_src
+
+ولا تقصد:
+
+#+begin_src C++
+a = b++; c;
+#+end_src
+
+الفرق مهم جدًا، والcompiler محتاج يعرف فين نهاية الexpression علشان يفهم الكود صح.
+ودي مش مشكلة مقتصرة على لغات البرمجة بس!
+شوف الجملة دي:
+"man eating tiger!"
+
+ممكن تتفسر بطريقتين:
+- الراجل بيأكل نمر
+- ولا نمر بياكل راجل؟
+
+علشان كده إحنا بنحتاج علامات الترقيم (punctuation) علشان نوضح المعنى، زي:
+"man-eating tiger!"
+(يعني نمر بياكل بشر)
+
+لما الstatements تكون ورا بعض، الكمبيوتر بينفذهم بالترتيب المكتوب.
+مثلاً:
+
+#+begin_src C++
+int a = 7;
+cout << a << '\n';
+#+end_src
+
+أول حاجة بيحصل definition ل a بالvalue اللي هي 7، بعد كده بيطبع a.
+
+الجمل المفيدة (statements with effects):
+عادةً، الstatement لازم يكون ليها تأثير (تعمل حاجة).
+الstatement اللي ما بتعملش حاجة غالباً بتكون logical errors.
+مثلاً:
+
+#+begin_src C++
+1 + 2;  // do an addition but don't use the sum
+a * b;  // do a mutliplication but don't use the product
+#+end_src
+
+الstatements دي ملهاش تأثير عندك في الكود، وغالبا الcompiler هيديك warning عليهم.
+
+علشان كده، الexpression statements اللي بنستخدمها عادة بتكون:
+
+- اسناد او assignment (زي x = 5)
+- إدخال/إخراج (زي cin و cout)
+- نداء دوال (function calls)
+
+فيه كمان نوع من الstatements اسمه empty statements. شوف المثال:
+
+#+begin_src C++
+if (x == 5);
+    y = 3;
+#+end_src
+
+المفروض السطر الأول ما يكونش فيه =;=.
+لكن في ++C الكود ده ينفع، علي الرغم من ان شكله يدي علي انه error وهو غالبا logical error فعلا.
+
+اللي بيحصل هو إن البرنامج:
+هيختبر إذا x == 5، ولو صحيح، ينفّذ empty statement (يعني ما يعملش حاجة!)
+
+بعد كده، في كل الأحوال، ينفّذ =;y = 3=
+
+يعني سواء x كانت 5 أو لأ، y هتاخد القيمة 3، وده غالبًا مش اللي كنت عايزه.
+
+الجزء الجاي هيكلمنا عن statements بتغيّر ترتيب التنفيذ، علشان نقدر نكتب عمليات حسابية أكتر تعقيدًا من إننا نمشي سطر ورا التاني بس.
+
+** الselection
+*** if-statements
+زي ما شفنا بلا بلا بلا
