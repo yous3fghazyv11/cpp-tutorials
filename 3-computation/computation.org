@@ -235,3 +235,13 @@ c3 = 7; // error: c3 is a constant an cannot be reassigned
 
 [[../images/operators3.png]]
 [[../images/operators4.png]]
+
+لاحظ ان:
+
+#+begin_src C++
+a > b > c;
+// is the same as
+(a > b) > c;
+#+end_src
+
+وده هيبقي يا اما =true > c= يا اما =false > c= ، بمعني ان =a > b > c= مش معناها انك بتتcheck لو b اقل من a واكبر من c، لو كنا عايزين نقول كدا كنا هنقول حاجه زي كدا مثلا: =a > b && b > c= ودي اللي معناها فعلا اننا بنتcheck لو b اقل من a واكبر من c.
