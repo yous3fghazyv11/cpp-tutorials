@@ -33,8 +33,7 @@
 #+begin_src C++
 #include <iostream>
 
-int main()
-{
+int main() {
     std::cout << "Please type your age:\n> ";
     int age;
     std::cin >> age;
@@ -115,8 +114,7 @@ std::cout << '\n';
 #include <iostream>
 #include <string>
 
-int main()
-{
+int main() {
     std::cout << "Please type your name:\n> ";
     std::string name;
     std::cin >> name;
@@ -186,8 +184,8 @@ true      // bool: either true or false
 عمليه انك تاخد input باستخدام ال get from operator او =<<= بتبقي حساسه للtype بتاع القيمه اللي داخله ونوع الvariable اللي انت بتدخل فيه، وبتقرأ بنائا علي الtype بتاعهم، بص كدا المثال دا مثلا:
 
 #+begin_src C++
-int main()  // read name and age
-{
+int main() {
+    // read name and age
     std::cout << "Please enter your first name and age\n> ";
     std::string first_name;          // string variable
     int age = 44;                    // integer variable with arbitrary value
@@ -211,8 +209,7 @@ int main()  // read name and age
 زي ما انت شفت، عمليه القرائه للstrings بتنتهي بالwhitespace بمعني انه مش هيعرف يقرأ غير كلمه واحده، بس افرض احنا عايزين نقرأ اكتر من كلمه؟ في طرق كتير تقدر تعمل بيها كدا، مثلا ممكن نقرأ اسم من كلمتين بالشكل دا:
 
 #+begin_src C++
-int main()
-{
+int main() {
     std::cout << "Please enter your first and second names\n> ";
     std::string first;
     std::string second;
@@ -257,8 +254,8 @@ std::string n3 = name - " Jr. ";  // error: - isn’t defined for strings
 #+begin_src C++
 #include <cmath>
 
-int main()          // simple program to exercise operators
-{
+int main() {
+    // simple program to exercise operators
     std::cout << "Please enter a floating−point value: ";
     double n = 0;
     std::cin >> n;
@@ -289,8 +286,8 @@ int main()          // simple program to exercise operators
 ال strings ليهم عدد اقل من ال operations بس زي ما هنشوف بعد كدا ان ليهم كتير من ال operations علي شكل functions. بس الoperations اللي بتتعمل عليهم باستخدام operator بتبقي نوعا ما سهله ومنطقيه، زي كدا مثلا:
 
 #+begin_src C++
-int main()  // read first and second name
-{
+int main() {
+    // read first and second name
     std::cout << "Please enter your first and second names\n";
     std::string first;
     std::string second;
@@ -330,14 +327,11 @@ int main()  // read first and second name
 لو تلاحظ هتلاقي الassignment بتبقي مفيده اكتر حاجه لما نبقي عايزين نغير قيمه نفس الvariable كذا مره، تعالي مثلا نبص علي البرنامج دا اللي بيdetect الكلمات المتكرره:
 
 #+begin_src C++
-int main()
-{
+int main() {
     std::string previous;
     std::string current;
-    while (std::cin >> current)
-    {
-        if (current == previous)
-        {
+    while (std::cin >> current) {
+        if (current == previous) {
             std::cout << "word: " << current << " repeated\n";
         }
         previous = current;
@@ -355,8 +349,7 @@ std::string current;
 اول حاجه هتلاحظ اننا زي ما قلنا مفيش initializer للstrings علشان هما by default بيتعملهم default initialization لempty string او ""
 
 #+begin_src C++
-while (std::cin >> current)
-{
+while (std::cin >> current) {
     // statements here
 }
 #+end_src
@@ -372,8 +365,7 @@ while (std::cin >> current)
 أما على Linux، فبيكون بالضغط على Ctrl+D.
 
 #+begin_src C++
-if (current == previous)
-{
+if (current == previous) {
     std::cout << "word: " << current << " repeated\n";
 }
 #+end_src
@@ -441,8 +433,7 @@ c *= 2; // means c = c * 2
 في مثال ال repeated words اللي فوق احنا ممكن نضيف تعديل بسيط يخلينا نعرف الكلمه رقم كام بظبط اللي اتكررت باستخدام ال composite assignment:
 
 #+begin_src C++
-int main()
-{
+int main() {
     int number_of_words = 0;
     std::string previous;  // previous word; initialized to ""
     std::string current;
@@ -570,8 +561,7 @@ remaining_free_slots_in_symbol_tab
 نقدر نعرف الcompiler مخصص مساحه قد ايه بظبط لكل variable احنا بنستخدمه بنائا علي نوع الvariable باستخدام الsizeof operator:
 
 #+begin_src C++
-int main()
-{
+int main() {
     int age = 20;
     double pi = 3.14;
     char first_letter = 'y';
