@@ -377,5 +377,97 @@ if (x == 5);
 الجزء الجاي هيكلمنا عن statements بتغيّر ترتيب التنفيذ، علشان نقدر نكتب عمليات حسابية أكتر تعقيدًا من إننا نمشي سطر ورا التاني بس.
 
 ** الselection
-*** if-statements
-زي ما شفنا بلا بلا بلا
+ساعات كتير في البرامج بتاعتنا هنبقي عايزين نعمل حاجه فقط في حاله ان شرط ما متحقق، لو الشرط دا مش متحقق هنبقي عايزين نعمل حاجه تانيه، او اننا مثلا نختار من وسط اختيارات كتير، في ال++C دا بيتعمل عن طريق يا اما if-statement يا اما switch-statement.
+*** الif-statements
+ابسط شكل من اشكال الselection هي الif-statement، واللي بتعمل حاجه بنائا علي شرط معين، مثلا:
+
+#+begin_src C++
+int a = 0;
+int b = 0;
+cout << "Please enter two integers\n";
+cin >> a >> b;
+if (a < b) // condition
+    cout << a << " is smaller than " << b << '\n'; // 1st alternative (if condition is true)
+else
+    cout << a << " is bigger than or equal to " << b << '\n'; // 2nd alternative (if condition is false)
+#+end_src
+
+الـ if-statement يعني (بيتقال عليها برضو جمله شرطيه) اللي بتخلينا نختار ما بين اختيارين. لو الشرط اللي حاطينه طلع صح، الكود اللي بعده بيتنفذ. ولو الشرط طلع غلط، الكود التاني هو اللي بيتنفذ.
+الفكرة بسيطة جدًا. في الحقيقة، أغلب الحاجات الأساسية في لغات البرمجة هي في الأصل طرق كتابة جديدة لحاجات إحنا اتعلمناها وإحنا صغيرين – يمكن حتى وإحنا في الحضانة.
+
+يعني مثلًا، أكيد اتقالك وإنت صغير إنك علشان تعدي الشارع عند إشارة المرور، لازم تستنى الإشارة لما تبقى خضرا:
+"لو الإشارة خضرا، امشي"
+و
+"لو الإشارة حمرا، استنى"
+
+بالـ C++ نكتبها كده مثلًا:
+
+#+begin_src C++
+if (traffic_light == green)
+    go();
+#+end_src
+
+أو:
+
+#+begin_src C++
+if (traffic_light == red)
+    wait();
+#+end_src
+
+الفكرة الأساسية سهلة، بس برضه سهل إنك تستخدم الـ if بشكل سطحي أو بسيط زيادة عن اللزوم.
+خد بالك من المثال الجاي وشوف إيه المشكلة فيه:
+
+#+begin_src C++
+// convert from inches to centimeters or centimeters to inches
+// a suffix ’i’ or ’c’ indicates the unit of the input
+
+constexpr double cm_per_inch = 2.54; // number of centimeters in an inch
+double length = 1; // length in inches or centimeters
+char unit = ' ';
+cout << "Please enter a length followed by a unit (c or i):\n";
+cin >> length >> unit;
+if (unit == 'i')
+    cout << length << "in == " << length∗cm_per_inch << "cm\n";
+else
+    cout << length << "cm == " << length/cm_per_inch << "in\n";
+#+end_src
+
+في الحقيقة، البرنامج هيشتغل زي ما انت متوقع تقريبا: لو كتبت 1i هتلاقيه بيقولك:
+
+#+begin_src text
+1in == 2.54cm
+#+end_src
+
+ولو كتبت 2.54c هيقولك:
+
+#+begin_src text
+2.54cm == 1in
+#+end_src
+
+بس المشكلة إننا ما اختبرناش البرنامج لما المستخدم يدخل بيانات غلط.
+البرنامج بيفترض إن المستخدم راجل محترم ودايما هيكتب input صح، بس الحقيقه ان المستخدم ساعات كتير بيطلع راجل مش تمام.
+الشرط 'unit == 'i بيميز بين الحالة اللي فيها الunit بتساوي 'i' وأي حالة تانية،
+بس ما بيدورش على حرف 'c' خالص.
+
+طب إيه اللي هيحصل لو المستخدم كتب 15f (يقصد feet مثلًا) "عشان يشوف إيه اللي هيحصل"؟
+الشرط ('unit == 'i) هيطلع غلط، والبرنامج هيشغّل جزء الـ else، ويحوّل من سنتيمتر لإنش.
+وأكيد ده مش اللي كنا عايزينه يحصل لما كتبنا 'f'.
+
+علشان كده، لازم دايمًا نختبر برامجنا باستخدام "مدخلات غلط"،
+لأن حد في يوم من الأيام – سواء بقصد أو بالصدفة – هيكتب حاجة غلط.
+والبرنامج المفروض يتصرف بشكل منطقي حتى لو اليوزر ماعملش كده.
+
+دي نسخه محسنه من البرنامج:
+
+#+begin_src C++
+if (unit == 'i')
+    cout << length << "in == " << length∗cm_per_inch << "cm\n";
+else if (unit == 'c')
+    cout << length << "cm == " << length/cm_per_inch << "in\n";
+else
+    cout << "Sorry, I don't know a unit called '" << unit << "'\n";
+#+end_src
+
+هنا هو بيتcheck لو كان 'unit == 'i لو الشرط صح بينفذ الكود اللي في الif-statement، لو الشرط طلع غلط هينفذ الكود اللي في الelse-statement واللي هي بدورها فيها if-else تانيه
+
+الif-else اللي جوا الelse-statement بتتcheck لو كان 'unit == 'c ولو الشرط دا اتحقق بتنفذ الكود اللي فيها ولو متحققش بتنفذ الelse بتاعه الif التانيه وبتقول "sorry, I don't know a unit called" مع اسم الunit اللي اليوزر دخلها
