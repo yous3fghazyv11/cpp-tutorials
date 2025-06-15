@@ -9,6 +9,7 @@
 - [[#الهدف-والtools-اللي-بنستخدمها][الهدف والtools اللي بنستخدمها]]
 - [[#الexpressions][الexpressions]]
 - [[#الconstant-expressions][الconstant expressions]]
+- [[#الoperators][الoperators]]
 
 * الcomputation
 احنا نوعا ما نقدر نقول ان كل اللي البرنامج بيعمله هو computation؛ يعني بياخد شوية inputs وبيطلع شوية output. في الآخر، إحنا بنسمي الجهاز اللي بيشغّل البرنامج ده computer.
@@ -228,3 +229,5 @@ c3 = 7; // error: c3 is a constant an cannot be reassigned
 #+end_src
 
 والنوع دا من الconstants مشهور جدا ومستخدم بكثره
+
+* الoperators
