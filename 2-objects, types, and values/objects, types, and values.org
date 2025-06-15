@@ -249,6 +249,15 @@ std::string n3 = name - " Jr. ";  // error: - isn’t defined for strings
 
 لما نقول error فاحنا قصدنا ان ال compiler مش هيرض يcompile البرنامج دا وهيطلعلك error ان الoperator =-= مش متعرف لل strings، الcompiler عارف كويس ايه العمليات اللي تنفع علي المتغيرات من النوع الفلاني
 
+دي مثلا بعض الoperators لبعض الأنواع المشهوره:
+
+[[../images/operators1.png]]
+[[../images/operators2.png]]
+
+لو مكان الoperation فاضي دا معناه ان الtype مش بيsupport الoperation دي بشكل مباشر.
+
+احنا هنشرح الoperations دي واكتر علي مدار الكورس، ولكن الهدف هنا من اني اوريك الجدول دا هو انك تعرف ان في operations كتير بoperators خاصه بيها وغالبا بيشتركوا في المعني وسط كتير من الأنواع.
+
 تعالي مثلا نشوف بعض ال operations اللي ممكن تتعمل علي الfloating-point numbers من النوع double:
 
 #+begin_src C++
