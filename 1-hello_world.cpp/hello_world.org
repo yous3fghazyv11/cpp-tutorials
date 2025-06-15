@@ -76,8 +76,7 @@
 // Simple program to print out "Hello, World!" in the standard output (terminal)
 #include <iostream>
 
-int main()
-{
+int main() {
     std::cout << "Hello, World!\n"; // the line that actually produces the output
     return 0;
 }
@@ -173,8 +172,7 @@ print("Hello, World!")
 اول لما بتشغل البرنامج ال operating system بيخش يدور علي function اسمها main وبينفذ اللي فيها علي سبيل المثال دي كانت ال main بتاعه ال hello_world.cpp:
 
 #+begin_src C++
-int main()
-{
+int main() {
     std::cout << "Hello, World!\n";
     return 0;
 }
@@ -193,8 +191,7 @@ int main()
 لاحظ ان السهمين لونهم اخضر، بس لو غيرنا ال =;return 0= وخليناها =;return 1= مثلا بالشكل دا:
 
 #+begin_src C++
-int main()
-{
+int main() {
     std::cout << "Hello, World!\n";
     return 1;
 }
@@ -241,8 +238,7 @@ hello_world.cpp
 تعالي نحاول نكتب شويه امثله كدا فيها شويه اخطاء او errors ونشوف الcompiler يقول عليها ايه.
 
 #+begin_src C++
-int main()
-{
+int main() {
     std::cout << "Hello, World!\n";
     return 0;
 }
@@ -253,8 +249,7 @@ int main()
 #+begin_src C++
 #include <iostream>
 
-int main()
-{
+int main() {
     std::cout << "Hello, World!\n";
     return 0;
 }
@@ -265,8 +260,7 @@ int main()
 #+begin_src C++
 #include <iostream>
 
-int main()
-{
+int main() {
     std::cout << "Hello, World!\n;
     return 0;
 }
@@ -277,8 +271,7 @@ int main()
 #+begin_src C++
 #include <iostream>
 
-integer main()
-{
+integer main() {
     std::cout << "Hello, World!\n";
     return 0;
 }
@@ -289,8 +282,7 @@ integer main()
 #+begin_src C++
 #include <iostream>
 
-integer main()
-{
+integer main() {
     std::cout << "Hello, World!\n"
     return 0;
 }
