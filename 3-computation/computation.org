@@ -470,4 +470,94 @@ else
 
 هنا هو بيتcheck لو كان 'unit == 'i لو الشرط صح بينفذ الكود اللي في الif-statement، لو الشرط طلع غلط هينفذ الكود اللي في الelse-statement واللي هي بدورها فيها if-else تانيه
 
-الif-else اللي جوا الelse-statement بتتcheck لو كان 'unit == 'c ولو الشرط دا اتحقق بتنفذ الكود اللي فيها ولو متحققش بتنفذ الelse بتاعه الif التانيه وبتقول "sorry, I don't know a unit called" مع اسم الunit اللي اليوزر دخلها
+الif-else اللي جوا الelse-statement بتتcheck لو كان 'unit == 'c ولو الشرط دا اتحقق بتنفذ الكود اللي فيها ولو متحققش بتنفذ الelse بتاعه الif التانيه وبتقول ال"sorry" بتاعتنا.
+
+والsyntax بتاعها بيبقي شكله كدا:
+
+#+begin_src text
+if (expresion)
+    (statement)
+else if (expression)
+    (statement)
+else
+    (statement)
+#+end_src
+
+طب افرض احنا عايزين ننفذ اكتر من statement جوا ال if-statement؟ بنحط curly braces!
+
+#+begin_src text
+if (expression) {
+    (statement)
+    (statement)
+} else if (expression) {
+    (statement)
+    (statement)
+} else {
+    (statement)
+    (statement)
+}
+#+end_src
+
+*** الswitch-statement
+الحقيقه المثال اللي فوق دا لما كنا بنقارن unit ب 'i' و 'c' واحد من اشهر انواع الselection في البرمجه، وهو selection قائم علي مقارنه value بمجموعه من الconstants.
+
+النوع دا من الselection مشهور اوي لردجه ان ++C عندها ليه statement خاصه اسمها الswitch-statement:
+
+#+begin_src C++
+switch (unit) {
+    case 'i':
+        cout << length << "in == " << length∗cm_per_inch << "cm\n";
+        break;
+    case 'c':
+        cout << length << "cm == " << length/cm_per_inch << "in\n";
+        break;
+    default:
+        cout << "Sorry, I don't know a unit called '" << unit << "'\n";
+        break;
+}
+#+end_src
+
+الswitch-statement أوضح وأسهل في الفهم من استخدام if-else متشعبة او زي ما بنقول nested،
+خصوصًا لما بنقارن قيمة معينة بعدد كبير من القيم الثابتة (constants).
+
+اللي بيحصل هو إن القيمة اللي بنكتبها بين القوسين بعد switch
+بيتقارن بينها وبين مجموعة من القيم التانية،
+وكل قيمة بنحددها باستخدام case.
+
+لو القيمة طابقت واحدة من القيم اللي في case،
+البرنامج بينفذ الكود اللي تابع لـ case دي.
+وبعدها لازم نكتب break علشان نمنع تنفيذ باقي الحالات.
+
+ولو القيمة ما طابقتش أي واحدة من الحالات،
+البرنامج بينفذ الكود اللي مكتوب بعد default (لو موجود).
+
+مش لازم تكتب default،
+بس من الأفضل دايمًا تحطه،
+إلا لو كنت متأكد بنسبة 100٪ إنك غطيت كل الاحتمالات – والبرمجة هتعلمك إن "اليقين المطلق" ده حاجة نادرة جدًا.
+
+دي بعض المفاهيم التقنيه الخاصه بالswitch-statement
+1. القيمه اللي بنعمل switch عليها لازم تبقي integer أو char أو enumeration type (هنعرف بعد كدا دي معناها ايه)، تحديدا مينفعش تعمل switch علي string او floating-point value
+2. الvalue اللي جوا الcase labels لازم تبقي constant expression، يعني مينفعش تستخدم variables جوا case label الا في حاله انه كان constant expression او literal
+3. مينفعش تستخدم نفس الvalue لاتنين case labels
+4. تقدر تستخدم اكتر من case label لنفس الcase
+5. متنساش تنهي كل case label بbreak
+
+
+مثلا:
+
+#+begin_src C++
+// you can switch only on integers, etc.:
+cout << "Do you like fish?\n";
+string s;
+cin >> s;
+switch (s) {  // error : the value must be of integer, char, or enum type
+    case "no":
+        // ...
+        break;
+    case "yes":
+        // ...
+        break;
+}
+#+end_src
+
+علشان نعمل selection علي string لازم نستخدم يا اما if-statement او map ودي حاجه هنشرحها بعدين في فصول متقدمه من الكورس.
