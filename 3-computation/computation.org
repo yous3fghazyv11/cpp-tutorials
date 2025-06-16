@@ -701,3 +701,37 @@ int main() {
 - الinitializer لـloop variable، وهنا هو 0
 - الtermination criterion، واللي هو إننا عايزين نعدي في الـloop 100 مرة
 - حاجة نعملها كل مرة في الـloop (body بتاع الـloop))
+
+
+الـlanguage construct اللي استخدمناه هنا اسمه while-statement. بعد الـkeyword المميزة ليه while، بيجي شرط وبعده الـbody:
+
+#+begin_src C++
+while (i < 100) {
+    std::cout << i << '\t' << std::pow(i, 2) << '\n';
+    ++i; 
+}
+#+end_src
+
+الـloop body عبارة عن block (محددة بـcurly braces) بتطبع صف من الجدول وتزوّد المتغير i.
+
+كل مرة بندخل فيها الـloop، بنبدأ باختبار =i<100=.
+
+لو الشرط اتحقق، يبقى لسه مخلصناش، وننفّذ الـloop body.
+
+لو وصلنا للنهاية، يعني ~i == 100~ ، بنخرج من الـwhile-statement  وننفّذ اللي بعده.
+
+في البرنامج ده، مافيش حاجة بعده، فبنخرج من البرنامج.
+
+الـloop variable بتاع while-statement لازم يكون متعرّف وinitialized برا (قبل) الـloop.
+
+لو ماعرّفناهوش، الـcompiler هيطلع error.
+
+لو عرّفناه وماعملناش له initialization، معظم الـcompilers هيطلع warning زي "local variable i not set"، بس هيخلينا نكمل لو أصرّينا.
+
+ما تصرّش! الـcompilers تقريبًا دايمًا عندها حق لما تطلع تحذير عن متغير مش مهيّأ. المتغيرات اللي من غير initialization سبب شائع للأخطاء.
+
+في الحالة دي، كتبنا:
+
+#+begin_src C++
+int i = 0; // start from 0
+#+end_src
