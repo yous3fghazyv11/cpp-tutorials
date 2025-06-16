@@ -13,7 +13,7 @@
 - [[#الstatements][الStatements]]
   - [[#الselection][الselection]]
   - [[#الiteration][الiteration]]
-  - [[#الfunctions][الfunctions]]
+- [[#الfunctions][الfunctions]]
 
 * الcomputation
 احنا نوعا ما نقدر نقول ان كل اللي البرنامج بيعمله هو computation؛ يعني بياخد شوية inputs وبيطلع شوية output. في الآخر، إحنا بنسمي الجهاز اللي بيشغّل البرنامج ده computer.
@@ -812,7 +812,7 @@ for (int i = 0; i < 100; i += 2) {
 
 في نوع تاني من الfor-loops اسمه for each ودا هنتكلم عنه في اخر المحاضره بعد لما نشرح الvectors.
 
-** الfunctions
+* الfunctions
 ايه بقا حوار الfunction اللي اسمها square دي؟ دا اسمه function call، وبشكل ادق دا بيتقال عليه call to square مع ادخال i كargument. الfunction ما هي الا مجموعه من الstatements انت اديتلهم اسم، ممكن برضو ترجع قيمه بيتقال عليها return value. الstandard library فيها functions كتير مفيده جدا، زي مثلا ال ~()sqrt~ اللي استخدمناها المحاضره اللي فاتت، وفي functions كتير هنحتاج نكتبها بنفسنا، علي سبيل المثال ال square function بتاعتنا ممكن تتعمل بالشكل دا:
 
 #+begin_src C++
@@ -963,3 +963,11 @@ int square(int x) {
 	return x * x;
 }
 #+end_src
+
+يعني لو كل اللي انت عايزه علشان تستخدم function، ببساطة بتكتب – أو غالبًا بتعمل ~include#~ – الdeclaration بتاعها.
+الdefinition بتاع الfunction نفسه ممكن يكون في مكان تاني خالص.
+
+هنتكلم عن الأماكن دي في محاضرات قادمه.
+
+الفرق بين الdeclaration والdefinition مهم جدًا في البرامج الكبيرة،
+علشان نقدر نخلي معظم الكود بعيد عن عينينا ونركز بس على الجزء اللي شغالين عليه حاليًا، افتكر الdivide and conquer.
