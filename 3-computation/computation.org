@@ -14,6 +14,7 @@
   - [[#الselection][الselection]]
   - [[#الiteration][الiteration]]
 - [[#الfunctions][الfunctions]]
+- [[#الvectors][الvectors]]
 
 * الcomputation
 احنا نوعا ما نقدر نقول ان كل اللي البرنامج بيعمله هو computation؛ يعني بياخد شوية inputs وبيطلع شوية output. في الآخر، إحنا بنسمي الجهاز اللي بيشغّل البرنامج ده computer.
@@ -971,3 +972,64 @@ int square(int x) {
 
 الفرق بين الdeclaration والdefinition مهم جدًا في البرامج الكبيرة،
 علشان نقدر نخلي معظم الكود بعيد عن عينينا ونركز بس على الجزء اللي شغالين عليه حاليًا، افتكر الdivide and conquer.
+
+* الvectors
+علشان نعمل أي حاجة مفيدة في برنامج، لازم يكون عندنا مجموعة بيانات نشتغل عليها.
+مثلاً، ممكن نحتاج:
+- قائمة أرقام تليفونات
+- أسماء لاعبي فريق كورة
+- الكورسات اللي بنذاكرها
+- الكتب اللي قريناها السنة اللي فاتت
+- كتالوج أغاني
+- اختيارات الدفع لعربية
+- توقعات الطقس للأسبوع الجاي
+- أسعار كاميرا في مواقع مختلفة
+
+الاحتمالات حرفيًا لا نهائية، وعشان كده استخدام مجموعات البيانات منتشر جدًا في البرامج.
+
+هنشوف بعدين طرق كتير نخزن بيها البيانات وأنواع تانيه من الcontainers والdata structures،
+بس دلوقتي، هنبدأ بواحدة من أبسط وأكتر الطرق المفيدة: vector.
+
+الvector هو مجموعه من الelements تقدر تaccess اي element فيه عن طريق حاجه اسمها index، علي سبيل المثال دا vector اسمه v:
+
+[[../images/vector.png]]
+
+هتلاقي ان اول element بيبدأ بindex 0 وتاني element ب1 وهكذا لحد ما نوصل لأخر element اللي الindex بتاعه هيبقي عدد الelements في الvector ناقص واحد، او نقدر نقول بشكل اخر (zero:size].
+
+احنا بنجيب element عن طريق اننا بنعمل subscripting لأسم الvector بالindex بتاع الelement، مثلا في المثال اللي فوق دا الvector اسمه v، فاحنا لو عايزين نجيب الelement التالت في الvector هنقول v[2]، وده هيساوي 9، وv[1] هتساوي 7 وهكذا. ولو هتلاحظ برضو في الرسمه، الvector ايضا بيخزن الsize بتاعه، في الحاله دي 6 لأنه فيه 6 elements.
+
+في ال++C ممكن نعمل vector زي دا كدا:
+
+#+begin_src C++
+#include <vector>
+std::vector<int> v = {5, 7, 9, 4, 6, 8};
+#+end_src
+
+هتلاحظ اننا بنحدد الtype بتاع الelements اللي في الvector جوا ~<>~ وفي الحاله دي int، ممكن مثلا نعمل vector بيخزن strings بالشكل دا:
+
+#+begin_src C++
+std::vector<std::string> philosopher = {"Kant", "Plato", "Hegel", "Nietzsche"};  // vector of 4 strings
+std::cout << philosopher[3] << '\n';  // output: Nietzsche
+#+end_src
+
+وبطبيعه الحال، الvector هيرفض انك تحط فيه elements من نوع غلط، مثلا:
+
+#+begin_src C++
+philosopher[2] = 99;  // error : trying to assign an int to a string
+v[2] = "Hume";        // error : trying to assign a string to an int
+#+end_src
+
+ممكن برضو نdefine vector بsize معين منغير ما نحط قيم للelements، وفي الحاله دي كلهم بيتعملهم default initialization، مثلا:
+
+#+begin_src C++
+std::vector<int> vi(6);  // a vector of 6 ints initialized to 0
+std::vector<std::string> vs(4)  // a vector of 4 strings initialized to "" or empty string
+#+end_src
+
+طبعا مينفعش تحاول تعمل access علي element من الvector مش موجود، مثلا:
+
+#+begin_src C++
+vi[2000] = 4;  // runtime error
+#+end_src
+
+ليه run-time error؟ مش المفروض دا يكون compile-time؟ المحاضره الجايه هنتكلم عن انواع الerrors بالتفصيل وهيبقي فيها جذء خاص بالأيرورز بتاعه الsubscripting وهنشوف فيها الحوار دا
