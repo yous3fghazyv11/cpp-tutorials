@@ -17,7 +17,7 @@
 - [[#الvectors][الvectors]]
   - [[#المرور-علي-عناصر-الvector][المرور علي عناصر الvector]]
   - [[#الاضافه-علي-vector][الاضافه علي vector]]
-  - [[#التعامل-مع-الbad-input][التعامل مع الbad input]]
+  - [[#التعامل-مع-الinput][التعامل مع الinput]]
 
 * الcomputation
 احنا نوعا ما نقدر نقول ان كل اللي البرنامج بيعمله هو computation؛ يعني بياخد شوية inputs وبيطلع شوية output. في الآخر، إحنا بنسمي الجهاز اللي بيشغّل البرنامج ده computer.
@@ -279,7 +279,7 @@ a = a + 1;  // a == 7
 int a = 3;
 int b = 5 + a++; // b == 8 because a == 3
 std::cout << b << ", " << a << '\n'; // 8, 4
-#+end_src>
+#+end_src
 
 نستخدم أي طريقه؟ وليه؟ إحنا بنفضّل أول واحده، اللي هي =a++= لأنها بتعبّر بشكل مباشر أكتر عن فكرة الزيادة (incrementing). هي بتقول إحنا عايزين نزود a بدل ما تقول احنا عايزين نجمع 1 على a وبعدين نكتب النتيجة في a. بشكل عام، الطريقة اللي بتعبّر عن فكرة بشكل مباشر أكتر في الكود بتكون أفضل من غيرها. حتي لو كان الoutput واحد بس الحاجه الreadability بتتحسن بكتير لما نختار expressions بتوضح الفكره اكتر.
 
@@ -1080,7 +1080,7 @@ for (int i : v) {
 
 #+begin_src text
 object_name.member_function_name(argument_list)
-#+end_src>
+#+end_src
 
 خلينا ناخد مثال عن قد ايه ممكن مفهوم الأضافه للvector دا يكون مفيد:
 
@@ -1149,7 +1149,7 @@ int main() { // reads emperatures into a vector
 }
 #+end_src
 
-** التعامل مع الbad input
+** التعامل مع الinput
 هتلاحظ ان معظم البرامج اللي احنا كنا بنعملها لحد الان مش بتتعامل بشكل كويس مع الbad input، ولا حتي بيديك prompt كويسه تشتغل بيها.
 
 الصح اني لما باجي اشغل برنامج مش ببص الاقي البرنامج واقف مش بيعمل حاجه بسبب انه مستني input، المفروض انه لو مستني input يعرفني انه مستني input والمفروض اكتب ايه بظبط، ولما اكتب حاجه غلط المفروض انه يتعامل معاها بشكل صح. شوف مثلا المثال دا:
@@ -1158,25 +1158,91 @@ int main() { // reads emperatures into a vector
 int main() {
     std::string name;
     int age;
-    while (std::cin >> age >> name)
+    while (std::cin >> name >> age)
         std::cout << "Hello, " << name << " (age " << age << ")\n";
 }
 #+end_src
 
 دا برنامج عادي جدا شبه معظم البرامج اللي احنا كنا بنعملها دلوقتي، لو تفتكر اول مره عملنا فيها البرنامج دا كان في المحاضره اللي فاتت، بس كان بيشتغل مره واحده من غير الwhile loop.
 
-كل اللي هو بيعمله انه بيستني منك input، وهو سنك وبعدها اسمك، وبيقولك رساله فيها اسمك وسنك وهكذا لحد لما توقفه بEOF ب C-d
+كل اللي هو بيعمله انه بيستني منك input، اسمك وبعدها سنك، وبيقولك رساله فيها اسمك وسنك وهكذا لحد لما توقفه بEOF ب C-d او انك تدخله bad input زي مثلا انك تدخل سنك الاول قبل اسمك
 
-مشكله البرنامج دا انه فيه كذا خطأ، تعالي نحاول نصلحهم واحد واحد بدايه بأول وأوضح خطأ وهو ان مفيش prompt! لو بعت البرنامج دا لصاحبك يجربه لازم تقوله انه المفروض انه يدخل سنه وبعدها اسمه، لأن غير كدا هو مش هيفهم البرنامج دا بيعمل ايه ولا عايز ايه.
+مشكله البرنامج دا انه فيه كذا خطأ، تعالي نحاول نصلحهم واحد واحد بدايه بأول وأوضح خطأ وهو ان مفيش prompt! لو بعت البرنامج دا لصاحبك يجربه لازم تقوله انه المفروض انه يدخل اسمه وبعدها سنه. لأن غير كدا هو مش هيفهم البرنامج دا بيعمل ايه ولا عايز ايه.
 
-خلينا نصلح المشكله دي ونحط prompt، بس هنحطها فين؟ ممكن مثلا نحطها قبل الloop؟
+خلينا نصلح المشكله دي ونحط prompt، بس السؤال هنا، هنحطها فين؟
+
+في اماكن كتير ممكن نحط فيها الprompt بتاعتنا، خد عندك علي سبيل المثال:
 
 #+begin_src C++
 int main() {
     std::string name;
     int age;
-    std::cout << "Enter you age followed by your name:\n> ";
-    while (std::cin >> age >> name)
+    while (std::cout << "Enter you name and age:\n> " && std::cin >> name >> age)
         std::cout << "Hello, " << name << " (age " << age << ")\n";
 }
-#+end_src>
+#+end_src
+
+هتلاقي ان دا تقريبا اسهل وأسلم حل، هنا الشرط بتاع الloop انه يطبع الprompt وبعدها علطول ياخد input، ولاحظ ان علامه ال ~&&~ بتقول ان الشرطين لازم يتحققوا، ودا بيضمن ان في حاله eof البرنامج هيبطل يشتغل.
+
+بس مشكله الطريقه دي انها في حاله الbad input البرنامج برضو هيبطل يشتغل، لو مثلا دخلت age قبل الname، وحاولت تقرأ الstring في age، الشرط بتاع الloop مش هيتحقق والبرنامج مش هيشتغل
+
+لذلك الحل دا ممكن مكونش افضل حاجه، تعالي مثلا نجرب دا:
+
+#+begin_src C++
+
+int main() {
+    std::string name;
+    int age;
+    while (std::cout << "Enter you age followed by your name:\n> ") {
+        std::cin >> name >> age;
+        std::cout << "Hello, " << name << " (age " << age << ")\n";
+    }
+}
+#+end_src
+
+هنا بيطلعلنا نفس النتيجه وهي ان الprompt بتظهر كل مره بنستقبل فيها input.
+
+بس هتلاحظ انك لو دخلت bad input ودخلت string علي age، او مثلا دخلتله eof، البرنامج هيفضل يطبع الprompt وال hello message بتاعتنا الي ما لا نهايه، ليه دا بيحصل؟
+
+السبب باختصار هو مفهوم الcin state، بعد لما بتدخله الbad input بتاعك ولنفترض مثلا انه كان 20 وبعدها yousef، هيدخل 20 علي name، ولما هيجي يدخل yousef علي age مش هيعرف علشان age دي int.
+
+واللي هيحصل هنا ان الcin هتدخل في حاجه اسمها fail state، تقدر تتخيل انها هتزعل من اللي حصل دا ومش هترضي تشتغل تاني. علشان كدا في البرنامج بتاعنا السطر بتاع الcin مش هيشتغل تاني خالص بسبب اللي حصل دا، وهيفضل البرنامج بتاعك ينفذ شرط الloop ويطبع الprompt وبعدها يجي ينفذ الcin يلاقيها فيfail state فينزل علي السطر اللي بعده ويطبع الرساله ويعيد تاني الي ما لا نهايه.
+
+علشان نفهم الموضوع دا بشكل افضل، بص مثلا المثال دا:
+
+#+begin_src C++
+#include <chrono>
+#include <iostream>
+#include <string>
+#include <thread>
+
+void print_cin_state() {
+    std::cout << "cin.good(): " << std::cin.good() << '\n';
+    std::cout << "cin.fail(): " << std::cin.fail() << '\n';
+    std::cout << "cin.eof(): "  << std::cin.eof()  << '\n';
+    std::cout << "cin.bad(): "  << std::cin.bad()  << '\n';
+}
+
+int main() {
+    std::string name;
+    int age;
+    while (std::cout << "Enter you age followed by your name:\n> ") {
+        std::cin >> name >> age && std::cout << "input statement executed\n";
+        std::cout << "Hello, " << name << " (age " << age << ")\n";
+        print_cin_state();
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+    }
+}
+#+end_src
+
+واللي هيحصل هنا ان الstring بتاعنا yousef هيتخزن في حاجه اسمها input buffer علشان يمكن نستخدمه بعد كدا. علشان نوضح الموضوع دا بشكل احسن، بص مثلا المثال دا:
+
+#+begin_src C++
+int main() {
+    int age = 0;
+    while(std::cout << "enter your age: ") {
+        std::cin >> age;
+        std::cout << "your age is: " << age << '\n';
+    }
+}
+#+end_src
