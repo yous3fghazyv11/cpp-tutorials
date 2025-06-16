@@ -12,6 +12,7 @@
 - [[#الoperators][الoperators]]
 - [[#الstatements][الStatements]]
   - [[#الselection][الselection]]
+  - [[#الiteration][الiteration]]
 
 * الcomputation
 احنا نوعا ما نقدر نقول ان كل اللي البرنامج بيعمله هو computation؛ يعني بياخد شوية inputs وبيطلع شوية output. في الآخر، إحنا بنسمي الجهاز اللي بيشغّل البرنامج ده computer.
@@ -652,3 +653,34 @@ switch (check) {
 
 الfallthrough دا attribute بيخلي نيتنا واضحه احنا عايزين نعمل ايه فعلا
 
+** الiteration
+ساعات كتير في البرمجه هتلاقي نفسك عايز تعمل حاجه كذا مره، زي مثلا انك عايز تقرأ كذا input زي ما شفنا قبل كدا وده هيخليك عايز تعمل عمليه input علي نفس الobject كذا مره، في حاله العمليات اللي محتاجه تكرار زي دي ال++C بتقدم بعض الstatements اللي هتساعدنا في ده
+*** الwhile-statement
+كمثال على التكرار أو الiteration، فكر في أول برنامج تم تشغيله على جهاز كمبيوتر بيخزن البرامج جواه (وهو جهاز EDSAC).
+البرنامج دا اتكتب من "David J. Wheeler" في احمد مختبرات جامعه كامبريدج في إنجلترا، يوم 6 مايو 1949.
+وكان الهدف من البرنامج هو حساب وطباعة قائمة بسيطة من المربعات (تربيع الأرقام) بالشكل دا:
+
+#+begin_src text
+0    0
+1    1
+2    4
+3    9
+4    16
+  ...
+98    9604
+99    9801
+#+end_src
+
+زي ما انت شايف البرنامج بيطبع رقم وبعد كدا حرف تاب 't\' وبعد كدا مربع الرقم دا، البرنامج دا بال++C هيبقي شكله كدا:
+
+#+begin_src C++
+int main() {
+    // calculate and print a table of squares 0-99
+    int i = 0; // star t from 0
+    while (i < 100) { // as logn as i is less than 100
+        cout << i << '\t' << square(i) << '\n';
+        ++i; // increment i (that is, i becomes i+1)
+		// then it will start again, this time with i being 2 instead of 1
+    }
+}
+#+end_src
