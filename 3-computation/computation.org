@@ -825,4 +825,79 @@ int square(int num) {
 
 علي عكس باقي الdefinition الfunction مش objects، وهنا الint دي مش معناها ان الfunction دي من الtype int، الint هنا معناها انك تقدر تتوقع ان الfunction دي لما تستخدمها هترجعلك قيمه من نوع int.
 
+ممكن بعد كدا بقا نستخدم الfunction دي بأي شكل احنا عايزينه:
 
+#+begin_src C++
+int x = square(2);  // x = 4
+std::cout << square(3) << " " << square(4); // prints 9 16
+int y = 5 + square(5);  // y == 30
+std::string z = square(6) // error, square returns int not string
+#+end_src
+
+بس لازم تديلها العدد والنوع الصح من الarguments، بص مثلا:
+
+#+begin_src C++
+square(2);               // probably a mistake: unused return value
+int v1 = square();       // error : argument missing
+int v2 = square;         // error : parentheses missing
+int v3 = square(1,2);    // error : too many arguments
+int v4 = square("two");  // error : wrong type of argument; int expected
+#+end_src
+
+حتي لو الfunction بتreturn حاجه معينه، انت مازلت تقدر تنادي الfunction دي ومتستخدمش الreturn value بتاعتها، علي الرغم من ان دا غالبا هيكون خطأ منك لأن كدا الfunction call دي مهدره.
+
+الsyntax بتاع الfunction definition بيبقي شكله عامل كدا:
+
+#+begin_src text
+type-identifier function-identifier(parameter-list) {
+    function-body
+}
+#+end_src
+
+يعني type او return type وبعده identifier او name للfunction وبعده قائمه بالparameters اللي الfunctions بتستقبلها جوا قوسين وبعد كدا بتحط الfunction body بتاعك ودا اللي بيبقي فيه الstatements كلها اللي الfunction بتعملها grouped by curly braces.
+
+الparameter list ممكن تبقي فاضيه في حاله ان الfunction مش بتاخد input، وغالبا لو الfunction مش بتاخد input فهي برضو غالبا مش بتproduce output او بالأصح مش بتreturn حاجه، وفي الحاله دي ممكن نعمل الreturn type بتاعها void:
+
+#+begin_src C++
+void say_sorry() {
+	std::cout << "I'm sorry uwu\n";
+}
+
+int main() {
+	say_sorry();
+}
+#+end_src
+
+**** ايه فايده الfunctions؟
+إحنا بنعرّف function لما نكون محتاجين نعمل عملية حسابية أو منطقية معينة تكون ليها اسم، لأن دا ليه مميزات كتير اهمها:
+- بتخلي العملية منفصلة ومنظمة منطقيًا
+- بتخلي كود البرنامج أوضح (عشان بندي العملية اسم)
+- بتخلينا نقدر نستخدم الـ function دي أكتر من مرة في أماكن مختلفة
+- بتسهّل علينا اختبار الكود
+
+وهنشوف أمثلة كتير على الأسباب دي قدّام، وساعات هنشير للسبب اللي خلّانا نستخدم function معينة.
+
+خد بالك إن برامج العالم الحقيقي ممكن يكون فيها آلاف الـ functions، وبعض البرامج فيها مئات الآلاف. ومن غير ما نقسم الكود وندي كل جزء اسم، عمرنا ما كنّا هنعرف نكتب أو نفهم البرامج الكبيرة دي.
+
+كمان هتلاحظ بسرعة إن في functions مفيدة جدًا، وهتتعب لو كل شوية تكتب نفس الكود بدل ما تنادي على function واحدة.
+يعني مثلًا ممكن تكون مرتاح تكتب x*x و 7*7 و (x+7)*(x+7) بدل ما تكتب square(x) و square(7) و square(x+7) — وده عشان square عملية بسيطة.
+
+لكن جرّب تعمل كود الجذر التربيعي (اللي اسمه sqrt في ++C) بنفسك؟ هتلاقيه كبير ومعقّد شوية. فطبعًا تفضّل تكتب sqrt(x) بدل ما تكرر كود طويل. والأجمل إنك مش محتاج تبص على كود sqrt أصلاً، كفاية إنك عارف إن sqrt(x) معناها الجذر التربيعي لـ x — وخلاص.
+
+هتلاحظ ان دا بيطبق مفهومين مهمين جدا قلنا عليهم في اول المحاضره، الabstraction والdivide and conquer.
+- بتقسم البرنامج بتاعك لمجموعه من الfunctions وكل function ليه ويظفه محدده بتقوم بيها ومشكله معينه بتحلها
+- بتخبي الimplementation بتاع عمليه ممكن تكون معقده جدا زي انك تجيب الجذر التربيعي لرقم تحت اسم بسيط زي =()sqrt=
+
+
+لو كنا حابين اننا نبسط الloop في البرنامج بتاع الsquare اكتر شويه كان ممكن نعمل كدا:
+
+#+begin_src C++
+void print_square(int x) {
+	std::cout << x << '\t' << x * x << '\n';
+}
+int main() {
+	for (int i = 0; i < 100; i++) {
+		print_square(i);
+	}
+}
+#+end_src
