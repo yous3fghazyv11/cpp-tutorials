@@ -334,7 +334,7 @@ a = b++; c;
 
 #+begin_src C++
 int a = 7;
-cout << a << '\n';
+std::cout << a << '\n';
 #+end_src
 
 أول حاجة بيحصل definition ل a بالvalue اللي هي 7، بعد كده بيطبع a.
@@ -384,12 +384,12 @@ if (x == 5);
 #+begin_src C++
 int a = 0;
 int b = 0;
-cout << "Please enter two integers\n";
-cin >> a >> b;
+std::cout << "Please enter two integers\n";
+std::cin >> a >> b;
 if (a < b) // condition
-    cout << a << " is smaller than " << b << '\n'; // 1st alternative (if condition is true)
+    std::cout << a << " is smaller than " << b << '\n'; // 1st alternative (if condition is true)
 else
-    cout << a << " is bigger than or equal to " << b << '\n'; // 2nd alternative (if condition is false)
+    std::cout << a << " is bigger than or equal to " << b << '\n'; // 2nd alternative (if condition is false)
 #+end_src
 
 الـ if-statement يعني (بيتقال عليها برضو جمله شرطيه) اللي بتخلينا نختار ما بين اختيارين. لو الشرط اللي حاطينه طلع صح، الكود اللي بعده بيتنفذ. ولو الشرط طلع غلط، الكود التاني هو اللي بيتنفذ.
@@ -424,12 +424,12 @@ if (traffic_light == red)
 constexpr double cm_per_inch = 2.54; // number of centimeters in an inch
 double length = 1; // length in inches or centimeters
 char unit = ' ';
-cout << "Please enter a length followed by a unit (c or i):\n";
-cin >> length >> unit;
+std::cout << "Please enter a length followed by a unit (c or i):\n";
+std::cin >> length >> unit;
 if (unit == 'i')
-    cout << length << "in == " << length∗cm_per_inch << "cm\n";
+    std::cout << length << "in == " << length∗cm_per_inch << "cm\n";
 else
-    cout << length << "cm == " << length/cm_per_inch << "in\n";
+    std::cout << length << "cm == " << length/cm_per_inch << "in\n";
 #+end_src
 
 في الحقيقة، البرنامج هيشتغل زي ما انت متوقع تقريبا: لو كتبت 1i هتلاقيه بيقولك:
@@ -461,11 +461,11 @@ else
 
 #+begin_src C++
 if (unit == 'i')
-    cout << length << "in == " << length∗cm_per_inch << "cm\n";
+    std::cout << length << "in == " << length∗cm_per_inch << "cm\n";
 else if (unit == 'c')
-    cout << length << "cm == " << length/cm_per_inch << "in\n";
+    std::cout << length << "cm == " << length/cm_per_inch << "in\n";
 else
-    cout << "Sorry, I don't know a unit called '" << unit << "'\n";
+    std::cout << "Sorry, I don't know a unit called '" << unit << "'\n";
 #+end_src
 
 هنا هو بيتcheck لو كان 'unit == 'i لو الشرط صح بينفذ الكود اللي في الif-statement، لو الشرط طلع غلط هينفذ الكود اللي في الelse-statement واللي هي بدورها فيها if-else تانيه
@@ -506,13 +506,13 @@ if (expression) {
 #+begin_src C++
 switch (unit) {
     case 'i':
-        cout << length << "in == " << length∗cm_per_inch << "cm\n";
+        std::cout << length << "in == " << length∗cm_per_inch << "cm\n";
         break;
     case 'c':
-        cout << length << "cm == " << length/cm_per_inch << "in\n";
+        std::cout << length << "cm == " << length/cm_per_inch << "in\n";
         break;
     default:
-        cout << "Sorry, I don't know a unit called '" << unit << "'\n";
+        std::cout << "Sorry, I don't know a unit called '" << unit << "'\n";
         break;
 }
 #+end_src
@@ -547,9 +547,9 @@ switch (unit) {
 
 #+begin_src C++
 // you can switch only on integers, etc.:
-cout << "Do you like fish?\n";
-string s;
-cin >> s;
+std::cout << "Do you like fish?\n";
+std::string s;
+std::cin >> s;
 switch (s) {  // error : the value must be of integer, char, or enum type
     case "no":
         // ...
@@ -561,3 +561,57 @@ switch (s) {  // error : the value must be of integer, char, or enum type
 #+end_src
 
 علشان نعمل selection علي string لازم نستخدم يا اما if-statement او map ودي حاجه هنشرحها بعدين في فصول متقدمه من الكورس.
+
+واحده من المميزات الأساسيه في الswitch-statement إنها بتخلي الكود أسرع من مجموعة if و else if، خصوصًا لما عدد الحالات يبقى كبير.
+
+ليه بقى أسرع؟
+لأن الـ switch بيقدر يجهز في وقت الcompile time جدول فيه الحالات المختلفة، وبيتنقل ليها مباشرة بدل ما يقارن واحدة واحدة زي if.
+
+بس علشان ده يحصل، في شوية شروط:
+
+لازم كل case يكون له قيمة ثابتة (constant)، يعني معروف قيمته وقت الcompile time. زي رقم ثابت (5)، أو حرف ('a') أو constexpr أو enum.
+
+القيم في case لازم تكون مختلفة عن بعض، مينفعش تكرر نفس القيمة في أكتر من case. مثلا:
+
+#+begin_src C++
+// case labels must be distinct and constants:
+int y = 'y';
+constexpr char n = 'n';
+std::cout << "Do you like fish?\n";
+char a = 0;
+std::cin >> a;
+switch (a) {
+    case n: // ok because n is constexpr
+    // ...
+    break;
+case y: // error : variable in case label
+    // ...
+    break;
+case 'n': // error : duplicate case label (n’s value is ’n’)
+    // ...
+    break;
+default:
+    // ...
+    break;
+}
+#+end_src
+
+ساعات بنبقي عايزين نعمل نفس الشيئ لمجموعه من القيم في الswitch، في الحاله دي نقدر نعمل كدا:
+
+#+begin_src C++
+// you can label a statement with several case labels:
+std::cout << "Please enter a digit\n";
+char a = 0;
+std::cin >> a;
+switch (a) {
+    case '0': case '2': case '4': case '6': case '8':
+        std::cout << "is even\n";
+        break;
+    case '1': case '3': case '5': case '7': case '9':
+        std::cout << "is odd\n";
+        break;
+    default:
+        std::cout << "that's not a digit\n";
+        break;
+}
+#+end_src
