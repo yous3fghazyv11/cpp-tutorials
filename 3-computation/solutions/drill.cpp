@@ -3,7 +3,7 @@
 #include <string>
 #include <vector>
 
-std::string transform(std::string s);
+std::string lowercase(std::string s);
 void clear_istream();
 bool valid_unit(std::string unit);
 std::string check_input(double num, std::string unit);
@@ -11,7 +11,7 @@ double convert_to_m(double num, std::string unit);
 double min_element(std::vector<double> v);
 double max_element(std::vector<double> v);
 
-std::string transform(std::string input_string) {
+std::string lowercase(std::string input_string) {
     std::string r;
     for (char input_char : input_string) {
         int temp = input_char;
@@ -68,7 +68,7 @@ std::string check_input(double num, std::string unit)
     if (num <= 0) {
         return "bad";
     }
-    unit = transform(unit);
+    unit = lowercase(unit);
     if (!valid_unit(unit)) {
         return "bad";
     }
@@ -89,16 +89,16 @@ double convert_to_m(double num, std::string unit) {
 
 int main() {
     // definitions
-    double value;
-    std::string unit;
+    double ivalue;
+    std::string iunit;
     std::vector<double> values;
     std::vector<std::string> units;
-    std::vector<double> values_in_m;
+    std::vector<double> converted_values;
     // main loop
     while (std::cout << "> ") {
         // getting input
-        std::cin >> value >> unit;
-        std::string status = check_input(value, unit);
+        std::cin >> ivalue >> iunit;
+        std::string status = check_input(ivalue, iunit);
         if (status == "bad") {
             clear_istream();
             std::cerr << "Bad input\n";
@@ -107,22 +107,22 @@ int main() {
             std::cout << "\nExiting...\n";
             break;
         }
-        unit = transform(unit);
-        values.push_back(value);
-        units.push_back(unit);
-        double value_in_m = convert_to_m(value, unit);
+        iunit = lowercase(iunit);
+        values.push_back(ivalue);
+        units.push_back(iunit);
+        double ivalue_in_m = convert_to_m(ivalue, iunit);
         // computing output
-        if (values_in_m.empty()) {
+        if (converted_values.empty()) {
             std::cout << "This is the first value entered\n";
         } else {
-            if (value_in_m < min_element(values_in_m)) {
+            if (ivalue_in_m < min_element(converted_values)) {
                 std::cout << "This is the smallest so far!\n";
             }
-            if (value_in_m > max_element(values_in_m)) {
+            if (ivalue_in_m > max_element(converted_values)) {
                 std::cout << "This is the largest so far!\n";
             }
         }
-        values_in_m.push_back(value_in_m);
+        converted_values.push_back(ivalue_in_m);
     }
     // printing out original values and units;
     std::cout << "Values entered: [";
@@ -135,10 +135,10 @@ int main() {
     std::cout << "]\n";
     // printing out sum in meters
     std::cout << "sum of values in meter: ";
-    double result = 0;
-    for (double value : values_in_m) {
-        result += value;
+    double sum_in_m = 0;
+    for (double converted_value : converted_values) {
+        sum_in_m += converted_value;
     }
-    std::cout << result << "m\n";
+    std::cout << sum_in_m << "m\n";
     return 0;
 }
