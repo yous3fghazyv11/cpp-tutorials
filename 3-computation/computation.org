@@ -622,9 +622,9 @@ switch (a) {
 #+begin_src C++
 switch (unit) {
     case 'i':
-        cout << length << "in == " << length∗cm_per_inch << "cm\n";
+        std::cout << length << "in == " << length∗cm_per_inch << "cm\n";
     case 'c':
-        cout << length << "cm == " << length/cm_per_inch << "in\n";
+        std::cout << length << "cm == " << length/cm_per_inch << "in\n";
 }
 #+end_src
 
@@ -674,13 +674,30 @@ switch (check) {
 زي ما انت شايف البرنامج بيطبع رقم وبعد كدا حرف تاب 't\' وبعد كدا مربع الرقم دا، البرنامج دا بال++C هيبقي شكله كدا:
 
 #+begin_src C++
+#include <cmath>
+
 int main() {
     // calculate and print a table of squares 0-99
     int i = 0; // star t from 0
     while (i < 100) { // as logn as i is less than 100
-        cout << i << '\t' << square(i) << '\n';
+        std::cout << i << '\t' << std::pow(i, 2) << '\n';
         ++i; // increment i (that is, i becomes i+1)
 		// then it will start again, this time with i being 2 instead of 1
     }
 }
 #+end_src
+
+
+اول حاجه هتلاحظ اننا علشان نجيب المربع بنستخدم function من الstandard library اسمها pow، وبندخلها i واللي هو الأساس بتاعنا و2 واللي هو الأس، فا =;std::pow(i, 2)= معناها باختصار i أس اتنين.
+
+طبعا البرنامج ده ماكانش مكتوب فعليًا بـ++C، لكن الـlogic كان زي اللي موضح هنا:
+- بنبدأ بـ0.
+- بنشوف إذا كنا وصلنا لـ100، ولو حصل كده يبقى خلصنا.
+- غير كده، بنـprint الرقم وتربيعه، مفصولين بـtab ('\t')، نزود الرقم، ونعيد المحاولة.
+
+الواضح إن علشان نعمل كده إحنا محتاجين:
+- طريقة نكرر بيها شوية statements (يعني loop)
+- متغير نتابع بيه إحنا عدّينا كام مرة في الـloop (loop variable أو control variable)، هنا الـint اللي اسمه i
+- الinitializer لـloop variable، وهنا هو 0
+- الtermination criterion، واللي هو إننا عايزين نعدي في الـloop 100 مرة
+- حاجة نعملها كل مرة في الـloop (body بتاع الـloop))
