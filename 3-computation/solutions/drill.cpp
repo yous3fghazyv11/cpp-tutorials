@@ -62,19 +62,17 @@ std::string check_input(double num, std::string unit)
 // or false if input bad however we want to also check for eof aswell
 {
     if (!std::cin) {
-        if (std::cin.eof()) {
-            return "eof";
-        }
-        return "bad";
+        if (std::cin.eof()) return "eof";
+        else return "bad";
     }
     if (num <= 0) {
         return "bad";
     }
     unit = transform(unit);
-    if (valid_unit(unit)) {
-        return "success";
+    if (!valid_unit(unit)) {
+        return "bad";
     }
-    return "bad";
+    return "success";
 }
 
 double convert_to_m(double num, std::string unit) {
