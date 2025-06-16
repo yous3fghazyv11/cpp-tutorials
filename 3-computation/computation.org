@@ -820,3 +820,9 @@ int square(int num) {
 	return num * num;
 }
 #+end_src
+
+اول سطر من الfunction دي بيعرفنا ان دي function، وانها اسمها square، وبتستقبل argument من نوع int (في الحاله دي اسمه num) وبترجع قيمه من نوع int.
+
+علي عكس باقي الdefinition الfunction مش objects، وهنا الint دي مش معناها ان الfunction دي من الtype int، الint هنا معناها انك تقدر تتوقع ان الfunction دي لما تستخدمها هترجعلك قيمه من نوع int.
+
+
