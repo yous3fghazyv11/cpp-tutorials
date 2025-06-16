@@ -615,3 +615,40 @@ switch (a) {
         break;
 }
 #+end_src
+
+أكتر خطأ شائع في الswitch-statement هو انك تنسي تنهي الcase بbreak-statemnt، مثلا:
+
+#+begin_src C++
+switch (unit) {
+    case 'i':
+        cout << length << "in == " << length∗cm_per_inch << "cm\n";
+    case 'c':
+        cout << length << "cm == " << length/cm_per_inch << "in\n";
+}
+#+end_src
+
+الكود دا مفيهوش error، دا كود ++C عادي وزي الفل، ولكن لما هتيجي تشلغه اللي هيحصل انه في حاله مثلا ان unit طلعت ب'i' وعمل الي جوا الcase الأولي، هينزل علي الcase اللي بعدها وينفذ الكود اللي فيها عادي، فمثلا لو دخلت للبرنامج دا input زي مثلا 2i، هيحصل كدا:
+
+#+begin_src text
+2in == 5.08cm
+2cm == 0.787402in
+#+end_src
+
+هتلاقيه نفذ الكود بتاع لو كان الinput بالcm برضو، علشان كدا دايما خلي بالك وانت بتستخدم switch انك تحط break بعد كل case
+
+في الحالات النادره اللي بنبقي عايزين فيها اننا حتي لو لقينا match في case معينه وعايزين نكمل، وعايزين الcompiler واللي بيقرأ الكود يعرف اننا قاصدين نكمل وان دا مش bug، ممكن نستخدم حاجه اسمها fallthrough:
+
+#+begin_src C++
+switch (check) {
+    case checked:
+        if (val<0)
+        val = 0;
+        [[fallthrough]];
+    case unchecked:
+        // ... use val ...
+        break;
+}
+#+end_src
+
+الfallthrough دا attribute بيخلي نيتنا واضحه احنا عايزين نعمل ايه فعلا
+
