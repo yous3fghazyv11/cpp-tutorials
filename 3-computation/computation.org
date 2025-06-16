@@ -15,6 +15,7 @@
   - [[#الiteration][الiteration]]
 - [[#الfunctions][الfunctions]]
 - [[#الvectors][الvectors]]
+  - [[#المرور-علي-عناصر-الvector][المرور علي عناصر الvector]]
 
 * الcomputation
 احنا نوعا ما نقدر نقول ان كل اللي البرنامج بيعمله هو computation؛ يعني بياخد شوية inputs وبيطلع شوية output. في الآخر، إحنا بنسمي الجهاز اللي بيشغّل البرنامج ده computer.
@@ -994,7 +995,7 @@ int square(int x) {
 
 [[../images/vector.png]]
 
-هتلاقي ان اول element بيبدأ بindex 0 وتاني element ب1 وهكذا لحد ما نوصل لأخر element اللي الindex بتاعه هيبقي عدد الelements في الvector ناقص واحد، او نقدر نقول بشكل اخر (zero:size].
+هتلاقي ان اول element بيبدأ بindex 0 وتاني element ب1 وهكذا لحد ما نوصل لأخر element اللي الindex بتاعه هيبقي عدد الelements في الvector ناقص واحد، او نقدر نقول بشكل اخر ]zero:size].
 
 احنا بنجيب element عن طريق اننا بنعمل subscripting لأسم الvector بالindex بتاع الelement، مثلا في المثال اللي فوق دا الvector اسمه v، فاحنا لو عايزين نجيب الelement التالت في الvector هنقول v[2]، وده هيساوي 9، وv[1] هتساوي 7 وهكذا. ولو هتلاحظ برضو في الرسمه، الvector ايضا بيخزن الsize بتاعه، في الحاله دي 6 لأنه فيه 6 elements.
 
@@ -1033,3 +1034,36 @@ vi[2000] = 4;  // runtime error
 #+end_src
 
 ليه run-time error؟ مش المفروض دا يكون compile-time؟ المحاضره الجايه هنتكلم عن انواع الerrors بالتفصيل وهيبقي فيها جذء خاص بالأيرورز بتاعه الsubscripting وهنشوف فيها الحوار دا
+
+** المرور علي عناصر الvector
+بما ان كل vector عارف الsize بتاعه، فاحنا ممكن نستخدم member function تجيبلنا الsize بتاعه، وده هيسمحلنا اننا نمر علي العناصر اللي فيه باستخدام loop، مثلا:
+
+#+begin_src C++
+std::vector<int> v = {5, 7, 9, 4, 6, 8};
+for (int i = 0; i < v.size(); i++) {
+	std::cout << v[i] << '\n';
+}
+#+end_src
+
+هنا احنا بنستخدم =()v.size= علشان نجيب الsize بتاع الvector، لاحظ الmember access operator هنا أو ال =.= ودا بيقولنا ان ()size دي member function، وهنعرف بعدين يعني ايه member functions.
+
+ميزه الfunction دي انها بتسمحلنا اننا نعمل traversing علي الelements بتاعه v منغير ما نطلع برا الرينج، في الحاله دي الrange بتاع v هيبقي:
+
+#+begin_src text
+[0:v.size()[
+or
+[0:v.size()-1]
+#+end_src
+
+أول element هيبقي =v[0]= وأخر element هيبقي =v[v.size() - 1]= وفي حاله ان ~v.size() == 0~ دا معناه ان الvector دا فاضي،.
+
+وفي طريقه تانيه اننا نعمل loop علي الelements بتاع الvector:
+
+#+begin_src C++
+std::vector<int> v = {5, 7, 9, 4, 6, 8};
+for (int i : v) {
+	std::cout << i << '\n';
+}
+#+end_src
+
+بنقرأ الحته بتاعه (int i : v) دي for each i in v او لكل i في v، علشان كدا بيتقال عليها for each loop.
