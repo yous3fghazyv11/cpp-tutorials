@@ -16,6 +16,7 @@
 - [[#الfunctions][الfunctions]]
 - [[#الvectors][الvectors]]
   - [[#المرور-علي-عناصر-الvector][المرور علي عناصر الvector]]
+  - [[#الاضافه-علي-vector][الاضافه علي vector]]
 
 * الcomputation
 احنا نوعا ما نقدر نقول ان كل اللي البرنامج بيعمله هو computation؛ يعني بياخد شوية inputs وبيطلع شوية output. في الآخر، إحنا بنسمي الجهاز اللي بيشغّل البرنامج ده computer.
@@ -1067,3 +1068,41 @@ for (int i : v) {
 #+end_src
 
 بنقرأ الحته بتاعه (int i : v) دي for each i in v او لكل i في v، علشان كدا بيتقال عليها for each loop.
+
+** الاضافه علي vector
+واحده من اهم مميزات الvector انك تقدر تضيف عليه elements، ساعات مثلا هتبدأ بempty vector مفيهوش عناصر، وهتعوز تزود عناصر فيه واحده واحده، وهنا هنستخدم member function تانيه اسمها ()push_back.
+الfunction دي بتزود عنصر في اخر الvector انت هتبقي محدده:
+
+[[../images/push_back.png]]
+
+لاحظ الsyntax بتاع ~()push_back~ زيه زي الsyntax بتاع ~()size~ الاتنين member functions للvector ولازم تنادي عليهم بال ~.~.
+
+#+begin_src text
+object_name.member_function_name(argument_list)
+#+end_src>
+
+خلينا ناخد مثال عن قد ايه ممكن مفهوم الأضافه للvector دا يكون مفيد:
+
+تعالي نبص على مثال واقعي شوية. في الغالب، بيكون عندنا سلسلة من القيم عايزين نقرأها جوه البرنامج علشان نعمل بيها حاجة.
+الحاجة دي ممكن تكون:
+- نرسم جراف بالقيم
+- نحسب الـ mean والـ median
+- نلاقي أكبر قيمة
+- نرتبهم
+- ندمجهم مع بيانات تانية
+- ندوّر على قيم "مهمة"
+- نقارنهم ببيانات تانية
+
+الموضوع مفتوح تمامًا، ومفيش حدود لنوع العمليات اللي ممكن نعملها على البيانات.
+بس أول خطوة: لازم ندخل البيانات دي في ذاكرة الكمبيوتر.
+
+كمثال عملي، هنفترض إننا عايزين نقرأ أرقام float بتمثّل درجات حرارة.
+
+#+begin_src C++
+int main() { // reads emperatures into a vector
+    std::vector<double> temps;
+    for(double temp; std::cin >> temp;)
+        temps.push_back(temp);
+    // do something
+}
+#+end_src>
