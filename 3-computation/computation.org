@@ -1105,4 +1105,45 @@ int main() { // reads emperatures into a vector
         temps.push_back(temp);
     // do something
 }
-#+end_src>
+#+end_src
+
+ايه اللي بيحصل هنا بظبط؟ تعالي ناخدها سطر سطر
+
+#+begin_src C++
+std::vector<double> temps;
+#+end_src
+
+هنا هتلاقي اول حاجه بنعمل vector هنخزن فيه قيم من نوع double وسميناه temps اختصارا لtemperatures وهنخزن فيه مجموعه من درجات الحراره علي سبيل المثال
+
+في الloop اللي بعده؟
+
+#+begin_src C++
+for(double temp; std::cin >> temp;)
+    temps.push_back(temp);
+#+end_src
+
+هنا احنا بنعمل اللي كنا بنتكلم عليه من شويه، بنقرأ double ونخزنه في متغير اسمه temp وبعد كدا بنضيفه للvector بتاع درجات الحراره المقروئه.
+
+وهنا لاحظ الloop بتاعتنا عامله ازاي، اول statement جوا الloop واللي هي ~;double temp~ بتdefine الcontrol variable بتاعنا، وبعد كدا بنخش علي شرط الloop واللي هو ~;std::cin >> temps~ ودا الشرط بتاع الloop.
+
+باختصار الشرط دا هيتنفذ كل مره او كل iteration، وامتي الشرط دا يبقي false والbody بتاع الloop ميتنفذش؟ لما عمليه القرائه تفشل، وفي حالتنا عمليه القرائه ممكن تفشل لسببين، يا اما EOF يا اما bad input الcin متقدرش تحطه في double.
+
+بعد لما ناخد الdata بتاعتنا فيvector ممكن بعد كدا نستخدمها، علي سبيل المثال تعالي نحسب المتوسط والوسيط أو mean and median.
+
+#+begin_src C++
+#include <algorithm>
+
+int main() { // reads emperatures into a vector
+    std::vector<double> temps;
+    for(double temp; std::cin >> temp;)
+        temps.push_back(temp);
+    // compute the mean temperature
+    double sum = 0;
+    for (double temp: temps)
+        sum += temp;
+    std::cout << "the mean is " << sum/temps.size() << '\n';
+    // compute the median temperature
+    std::ranges::sort(temps);  // sort the temperatures
+    std::cout << "the median is " << temps[temps.size()/2] << '\n';
+}
+#+end_src
