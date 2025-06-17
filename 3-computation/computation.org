@@ -14,6 +14,8 @@
   - [[#الselection][الselection]]
   - [[#الiteration][الiteration]]
 - [[#الfunctions][الfunctions]]
+  - [[#ايه-فايده-الfunctions][ايه فايده الfunctions؟]]
+  - [[#الfunction-declaration][الfunction declaration]]
 - [[#الvectors][الvectors]]
   - [[#المرور-علي-عناصر-الvector][المرور علي عناصر الvector]]
   - [[#الاضافه-علي-vector][الاضافه علي vector]]
@@ -872,7 +874,7 @@ int main() {
 }
 #+end_src
 
-**** ايه فايده الfunctions؟
+** ايه فايده الfunctions؟
 إحنا بنعرّف function لما نكون محتاجين نعمل عملية حسابية أو منطقية معينة تكون ليها اسم، لأن دا ليه مميزات كتير اهمها:
 - بتخلي العملية منفصلة ومنظمة منطقيًا
 - بتخلي كود البرنامج أوضح (عشان بندي العملية اسم)
@@ -938,7 +940,7 @@ double power(double base, double exponenet) {
 الfunction دي اسمها power، بتاخد منك أساس او base وأوس او exponent، فمثلا =;power(3,3)= المفروض ترجع 27
 ----------
 
-**** الfunction declaration
+** الfunction declaration
 لاحظت ان تقريبا كل المعلومات اللي انت محتاجها علشان تستخدم الfunction موجوده في اول سطر؟ يعني مثلا في المثال بتاع الfunction اللي اسمها power اللي انت لسه عاملها، مجرد ما نبص علي اول سطر فيها واللي هو ~double power(double base, double exponenet)~ هيبقي عندنا المعلومات الكافيه اننا نقول:
 
 #+begin_src C++
