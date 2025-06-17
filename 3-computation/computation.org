@@ -1364,4 +1364,109 @@ int main() {
 زي ما انت شايف انا نضفت الmain شويه، الزياده هنا هو اني بقيت بشوف لو الcin failed وبعرف الuser انه دخل bad input وبclear الcin state وكمان بخلي الcin تتجاهل او تشيل اي حاجه في الinput buffer،
 دا عن طريق الfunction اللي اسمها =()std::cin.ignore= وهتلاحظ انها بيخشلها two arguments، اول argument هو عدد الحروف اللي هتشيلها من الinput buffer، وتاني argument هو توقف تشيل لحد فين بظبط.
 
-في حالتنا اول argument واللي هو ~()std::numeric_limits<std::streamsize>::max~ دا مجرد function بترجع اكبر قيمه ينفع تتخزن في نوع معين
+في حالتنا اول argument واللي هو ~()std::numeric_limits<std::streamsize>::max~ دا مجرد function بترجع اكبر قيمه ينفع تتخزن في نوع معين واللي بتحدده جوا ال <>، في الحاله دي هو ~std::streamsize~
+
+علي سبيل المثال:
+
+#+begin_src C++
+std::cout << std::numeric_limits<int>::max() << '\n';
+#+end_src
+
+هيطلعلك رقم غالبا زي: 2147483647 وده اكبر رقم يقدر الint يستحمله.
+
+في حالتنا هنا ~()std::numeric_limits<std::streamsize>::max~ دي بترجع اكبر رقم من الحروف يقدر الinput stream يستحملها،.
+
+لذلك السطر: =;std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n')= دا بيقول ببساطه فضي الinput stream، افضي منه قد ايه؟ بعدد الحروف اللي يقدر يستحملها (مجرد طريقه حنيوكه شويه علشان نقول فضيه كله) طب ابطل اعمل ignore اول لما الاقي ايه؟ اول لما تلاقي ~n\~.
+
+وده بيضمن ان مفيش اي حاجه من الbad input هتتخزن في الbuffer، وبكده احنا لما هنعمل =continue= وهنخلي البرنامج يتجاهل الiteration الحاليه ونعمل الiteration الجايه هنبدأ بgood cin state وكمان input buffer فاضي.
+
+[[../images/cin_ignore.png]]
+
+زي ما انت شايف اخيرا البرنامج بتاعنا بقي منيع ضد الbad input.
+
+وتظن ان خلاص كدا بس تكتشف ان لسه في مشكله بسيطه جدا، هنقفل البرنامج ازاي؟ احنا كنا بنقفله عن طريق اننا نديله bad input، دلوقتي معدش ينفع، فهنيجي نقفله ب C-d او eof character هتلاقيه بيقولك:
+
+[[../images/eof_problem.png]]
+
+ليه؟ علشان نفهم دا بيحصل ليه هنحتاج نرجع الfunction الجميله بتاعتنا بتاعه =()print_cin_state= هي و ~()sleep_for~.
+
+#+begin_src C++
+int main() {
+    std::string name;
+    int age;
+    while (std::cout << "enter your name and age:\n> ") {
+        std::cin >> name >> age;
+        print_cin_state();
+        std::cout << "Hello, " << name << " (age " << age << ")\n";
+        std::this_thread::sleep_for(std::chrono::seconds(3));
+        std::cout << "\n\n";
+    }
+}
+#+end_src
+
+لما هنيجي نشغل الكود دا ونديله eof character او C-d هيحصل الاتي:
+
+[[../images/eof_problem2.png]]
+
+اللي انا عملته ان اول لما البرنامج اشتغل بدل ما اديله input قمت مديله eof character علطول، زي ما انت شايف دا هيدخل cin في حاله fail و eof الاتنين مع بعض!
+
+لما نرجع نبص بقا علي البرنامج الأول ونزودله =()print_cin_state= هي و ~()sleep_for~ علشان نشوف في ايه:
+
+#+begin_src C++
+int main() {
+    std::string name;
+    int age;
+    while (std::cout << "enter your name and age:\n> ") {
+        std::cin >> name >> age;
+        if (std::cin.fail()) {
+            std::cout << "bad input, clearning the input buffer\n";
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            print_cin_state();
+            std::this_thread::sleep_for(std::chrono::seconds(3));
+            continue;
+        }
+        std::cout << "Hello, " << name << " (age " << age << ")\n";
+    }
+}
+#+end_src
+
+هتلاقي بيطلعلك المنظر دا لما تشغله:
+
+[[../images/eof_problem3.png]]
+
+زي ما انت شايف ال =()std::cin.clear= بتعمل clear للfail state بس مش بتعمل clear لل eof state! والeof state زيها زي الfail بتخلي cin متشتغلش.
+
+ودي الحقيقه حاجه كويسه، لأن لو كانت بتعمل clear للeof state كمان احنا مكناش هنعرف نفرق بينهم، واحنا عايزين نفرق بينهم، عايزين في حاله الfail نعمل ignore لكل حاجه في الinput buffer ونبدأ تاني، وفي حاله الeof عايزين نخرج بره البرنامج.
+
+دا ممكن يتعمل بالشكل دا:
+
+#+begin_src C++
+int main() {
+    std::string name;
+    int age;
+    while (std::cout << "enter your name and age:\n> ") {
+        std::cin >> name >> age;
+        if (std::cin.fail()) {
+            if (std::cin.eof()) {
+                std::cout << "\nExitting...\n";
+                return 0;
+            }
+            std::cout << "bad input\n";
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            continue;
+        }
+        std::cout << "Hello, " << name << " (age " << age << ")\n";
+    }
+}
+#+end_src
+
+المرادي بقا بجد البرنامج دا بيهندل الinput صح، بعد لما بياخد input بيتcheck لو الcin في fail state، لو اه بيشوف ايه سبب الfail دا، هل هو eof؟ هل اليوزر ضغط C-d؟ لو اه يبقي هو عايز يخرج من البرنامج فبنقوله اننا هنخرج من البرنامج وبنعمل ~;return 0~ وطبعا لما بنعمل return دا بيterminate الfunction وفي الحاله دي احنا بنterminate الmain فبنterminate البرنامج.
+
+طب لو مكانش eof؟ يبقي اليوزر دخل bad input، في الحاله دي بنعرفه ان الinput اللي هو دخله دا كان bad input وبنتجاهل الinput دا وبنclear الstate بتاعه cin من fail استعدادا لتلقي input جديد، وبنتجاهل الbad input اللي هو دخله من الinput buffer علشان ميعملناش مشاكل تاني. it's quite perfect right now
+
+كدا البرنامج دا:
+- فيه prompt
+- بيهندل الbad input بشكل كويس
+- بيهندل الeof بشكل كويس
