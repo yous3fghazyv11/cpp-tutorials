@@ -1,7 +1,7 @@
 #+TITLE: Computation
 #+AUTHOR: Yousef Ghazy
 #+DESCRIPTION: Objects, types and values
-#+TOC: headlines 10
+#+OPTIONS: toc:10
 
 الcomputation هنا معناها الstructure بتاع العمليات اللي بتحصل علي البيانات، في المحاضره دي هنوضح ازاي تحسب value من مجموعه operands واللي بيتقال عليه (expression)، ازاي تختار انهي statements تتنفذ امتي (selection)، ازاي تنفذ نفس الcomputation علي عده قيم او values، وازاي نعمل برامج صغيره جوا البرنامج بتاعنا (functions)
 * الفهرس :toc:
