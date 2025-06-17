@@ -1193,7 +1193,7 @@ int main() {
 int main() {
     std::string name;
     int age;
-    while (std::cout << "Enter you age followed by your name:\n> ") {
+    while (std::cout << "Enter your name and age:\n> ") {
         std::cin >> name >> age;
         std::cout << "Hello, " << name << " (age " << age << ")\n";
     }
@@ -1211,10 +1211,8 @@ int main() {
 علشان نفهم الموضوع دا بشكل افضل، بص مثلا المثال دا:
 
 #+begin_src C++
-#include <chrono>
 #include <iostream>
 #include <string>
-#include <thread>
 
 void print_cin_state() {
     std::cout << "cin.good(): " << std::cin.good() << '\n';
@@ -1226,16 +1224,90 @@ void print_cin_state() {
 int main() {
     std::string name;
     int age;
-    while (std::cout << "Enter you age followed by your name:\n> ") {
-        std::cin >> name >> age && std::cout << "input statement executed\n";
+    while (std::cout << "enter your name and age:\n> ") {
+        if (std::cin >> name >> age) std::cout << "input statement executed\n";
         std::cout << "Hello, " << name << " (age " << age << ")\n";
         print_cin_state();
-        std::this_thread::sleep_for(std::chrono::seconds(1));
+		std::cout << "\n\n";
     }
 }
 #+end_src
 
-واللي هيحصل هنا ان الstring بتاعنا yousef هيتخزن في حاجه اسمها input buffer علشان يمكن نستخدمه بعد كدا. علشان نوضح الموضوع دا بشكل احسن، بص مثلا المثال دا:
+خلينا نحاول نفهم البرنامج دا سطر سطر بدايه من الmain، اول حاجه هتلاقي اننا عدلنا علي الcin statement وخليناها بتتنفذ جوا if-statemnt، وفي حاله ان عمليه الinput كانت ناجحه، هيقولنا ده.
+
+تاني حاجه عملناها وهي function اسمها print_cin_state، هتلاقي ان الfunction دي بتطبع القيم بتاعه كل state من الstates بتاع الcin. والقيم دي بتبقي يا اما 0 يا اما 1 في دلاله علي الstate اللي active حاليا.
+
+تعالي نجرب نشغل كدا البرنامج دا ونشوف هيعمل ايه عندي علي السيستم.
+
+[[../images/cin_state_nodelay.png]]
+
+اول حاجه هتلاقي انه قاللي ان الinput statement اتنفذت عادي، وقاللي برضو ان الstate بتاعه الcin حاليا هي good ومستني مني input تاني عادي.
+
+تعالي بقا نجرب نكتب bad input او eof.
+
+[[../images/cin_failed_nodelay.png]]
+
+ده اللي حصل لما دخلتله رقم الأول قبل الstring. الحقيقه انه كتب حوالي 52000 سطر قبل ما انا اوقفه ب C-c في خلال حوالي 3 ثواني، دا ليه؟ لأن لو تلاحظ الstate بتاع cin هي failed، وده بسبب اني حاولت ادخل string في متغير من نوع int، علشان كدا الinput statement معادتش هتتنفذ وهتلاقي السطر اللي بيقولنا انها اتفذت معادش بيتطبع، وهيفضل البرنامج في حلقه لا نهائيه من الطباعه بسبب ان الشرط بتاع الloop دايما متحقق ودايما هيطبع الprompt ومش هيقف ابدا علشان ياخد input علشان الcin في حاله fail.
+
+علشان نوضح الموضوع دا اكتر خلينا نزود السطور دي:
+
+#+begin_src C++
+#include <chrono>
+#include <thread>
+
+int main() {
+    std::string name;
+    int age;
+    while (std::cout << "enter your name and age:\n> ") {
+        if (std::cin >> name >> age) std::cout << "input statement executed\n";
+        std::cout << "Hello, " << name << " (age " << age << ")\n";
+        print_cin_state();
+		std::cout << "waiting...\n";
+        std::this_thread::sleep_for(std::chrono::seconds(3));
+    }
+}
+#+end_src
+
+مش لازم نشرح بظبط اللي بيحصل هنا بس اللي عليك تعرفه ان السطر اللي ضيفناه في الmain دا لما بيجي يتنفذ بيخلي البرنامج يقف لمده 3 ثواني، وعلشان نستخدمه احتاجنا نستدعي الheader files اللي انت شايفها فوق دي
+
+كل دا علشان بس نعرف نلقط بشكل افضل هو بيطبع ايه بدل ما هو بيطبع حوالي 10 تلاف سطر في الثانيه.
+
+لما نيجي نشغل البرنامج دا هيطلعلنا دا:
+
+[[../images/waiting.png]]
+
+اهو كدا بقا نقدر نشوف اللي بيحصل بشكل افضل، هتلاقي ان لما بندخله yousef 22 عادي بيتصرف بشكل طبيعي زي المره اللي فاتت، بس لما دخلناله الbad input بتاعنا وحاول يدخل "yousef" علي age، الcin دخلت في fail state ومطبعش السطر بتاع الinput statement executed، وكمان قاللنا 1 جنب cin.fail والمره الجايه اللي طبع فيها الprompt مستناش ياخد input ودخل علي طول علي السطر اللي بعده علشان الcin في fail state وبيفضل هكذا في حلقه مفرغه.
+
+ازاي نحل المشكله دي؟ هنحتاج اننا يدويا نعمل clear للstate بتاعه cin علشان ترجع تستقبل input تاني.
+
+#+begin_src C++
+int main() {
+    std::string name;
+    int age;
+    while (std::cout << "Enter you age followed by your name:\n> ") {
+		if (std::cin.fail()) std::cin.clear();
+        if (std::cin >> name >> age) std::cout << "input statement executed\n";
+        std::cout << "Hello, " << name << " (age " << age << ")\n";
+        print_cin_state();
+		std::cout << "waiting...\n";
+        std::this_thread::sleep_for(std::chrono::seconds(3));
+    }
+}
+#+end_src
+
+لما نيجي ننفذ البرنامج دا هتلاقي دا اللي بيحصل:
+
+[[../images/cin_clear.png]]
+
+زي ما انت شايف حتي بعد لما دخلناله bad input هو رجع ياخد مننا input تاني عادي بسبب اننا عملنا clear للcin state.
+
+وتفتكر ان المشكله اتحلت والبرنامج بتاعنا بقا فيه prompt وبقا بيقدر يتعامل مع الbad input لحد ما تكمل استخدام البرنامج وتجرب تدخل بعد كدا الinput الصح وتكتشف انه بيعمل حاجه غريبه جدا:
+
+[[../images/bad_input_buffer.png]]
+
+هتلاحظ ان في الiteration لما دخلناله الbad input الstate بتاعه cin كانت fail، ليه؟ لأنه جه يدخل "yousef" في age معرفش، تفتكر "yousef" دي هتورح فين؟ هتروح للinput buffer.
+
+هنا الstring بتاعنا "yousef" هيتخزن في حاجه اسمها input buffer علشان يمكن نستخدمه بعد كدا. علشان نوضح الموضوع دا بشكل احسن، بص مثلا المثال دا:
 
 #+begin_src C++
 int main() {
@@ -1246,3 +1318,48 @@ int main() {
     }
 }
 #+end_src
+
+لو جينا نشغل البرنامج دا ونديله كذا input ورا بعض هتلاقي دا اللي بيحصل:
+
+[[../images/age_input_buffer.png]]
+
+هنا 20 هتتقرأ في age عادي، بس 21 و 22 و 23 هيتخزنوا في الinput buffer علشان نستخدمهم بعد كدا.
+
+علشان كدا هتلاقي انه بيقوللي your age is: 20 عادي بس بعد كدا لما بيجي ياخد input تاني مش بيستني اني اديله input وعلطول بياخد 21 من الinput buffer ويحطها في age، وبعد كدا المره اللي بعدها بيعمل نفس الكلام مع 22 وهكذا
+
+علشان كدا في البرنامج بتاعنا فوق، لما دخلناله 22 بعدها "yousef" وهو حط 22 في name ومعرفش يحط "yousef" في age، حطها في الinput buffer ودخل fail state،
+في الiteration اللي بعدها احنا عملنا clear للfail state فهيقرأ تاني، بس علي الرغم من ان الprompt بتقول enter your name and age، هو فعليا الname بالفعل متاخد ل"yousef" لأنه
+لما جه يقرأ لقي ان هو هو عنده "yousef" من الinput buffer ف ~cin >> name~ خدتها وهو دلوقتي مستني مني الinput بتاع ~cin >> age~ وانا دخلتله yousef و 22، فهيجي يدخل yousef في age مش هيعرف
+وهيحطها في الinput buffer هي و 22 ويدخل fail state، علشان كدا هتلاقيه طبع yousef اللي من الinput buffer بس مطبعش الage وقالك fail 1 ومقالش input statement executed مع ان الinput بتاعي كان سليم.
+
+الiteration اللي بعدها هو مش هيستني منك input اصلا لأنه بالفعل عنده "yousef" و 22 في الinput buffer، هياخدهم عادي ويقولك input statement executed وهيقولك cin.good ب 1 دلاله علي ان كل حاجه مشيت زي الفل.
+
+لفه طويله صح؟
+
+ازاي بقا نلغي التصرف دا؟
+
+#+begin_src C++
+#include <iostream>
+#include <limits>
+#include <string>
+
+int main() {
+    std::string name;
+    int age;
+    while (std::cout << "enter your name and age:\n> ") {
+        std::cin >> name >> age;
+        if (std::cin.fail()) {
+            std::cout << "bad input, clearning the input buffer\n";
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            continue;
+        }
+        std::cout << "Hello, " << name << " (age " << age << ")\n";
+    }
+}
+#+end_src
+
+زي ما انت شايف انا نضفت الmain شويه، الزياده هنا هو اني بقيت بشوف لو الcin failed وبعرف الuser انه دخل bad input وبclear الcin state وكمان بخلي الcin تتجاهل او تشيل اي حاجه في الinput buffer،
+دا عن طريق الfunction اللي اسمها =()std::cin.ignore= وهتلاحظ انها بيخشلها two arguments، اول argument هو عدد الحروف اللي هتشيلها من الinput buffer، وتاني argument هو توقف تشيل لحد فين بظبط.
+
+في حالتنا اول argument واللي هو ~()std::numeric_limits<std::streamsize>::max~ دا مجرد function بترجع اكبر قيمه ينفع تتخزن في نوع معين
