@@ -31,7 +31,7 @@ Images used in the `.org` files will live in the images directory, links from `.
 > **What if I'm stuck and i really need help?**  
 > Use the issues section to raise an issue, i will help you ^_^
 
-If you run into any issues, please don’t hesitate to open an issue or a pull request.  
+If you run into any issues, please don’t hesitate to open an issue.  
 That’s it — enjoy! :)
 
 ## Prerequisites
