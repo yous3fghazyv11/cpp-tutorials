@@ -61,7 +61,7 @@ std::string check_input(double num, std::string unit)
 // we could've made this function a simple bool that returns true if input good,
 // or false if input bad however we want to also check for eof aswell
 {
-    if (!std::cin) {
+    if (std::cin.fail()) {
         if (std::cin.eof()) return "eof";
         else return "bad";
     }
