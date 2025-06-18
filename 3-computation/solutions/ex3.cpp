@@ -1,5 +1,7 @@
 #include <algorithm>
+#include <ios>
 #include <iostream>
+#include <limits>
 #include <vector>
 
 double calc_mean(std::vector<double> v) {
@@ -23,10 +25,23 @@ double calc_median(std::vector<double> v) {
 }
 
 int main() {
-    // reads emperatures into a vector
+    // reads temperatures into a vector
     std::vector<double> temps;
-    for(double temp; std::cin >> temp;)
+    std::cout << "Please enter some temperatures:\n";
+    for(double temp; std::cout << "> ";) {
+        if (std::cin.fail()) {
+            if (std::cin.eof()) {
+                std::cout << '\n';
+                break;
+            }
+            std::cerr << "error: invalid input\n";
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            continue;
+        }
+        std::cin >> temp;
         temps.push_back(temp);
+    }
     // calculate mean and median
     std::cout << "the mean is " << calc_mean(temps) << '\n';
     std::cout << "the median is " << calc_median(temps) << '\n';
