@@ -53,13 +53,12 @@ double convert_to_m(double num, std::string unit) {
 }
 
 int main() {
-    // definitions
     double ivalue;
     std::string iunit;
     std::vector<double> values;
     std::vector<std::string> units;
     std::vector<double> converted_values;
-    // main loop
+    // input loop
     while (std::cin >> ivalue >> iunit) {
         if (!valid_input(ivalue, iunit)) {
             std::cerr << "Bad input\n";
