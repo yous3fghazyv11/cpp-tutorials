@@ -15,18 +15,12 @@ int main() {
             continue;
         }
         switch (op) {
-            case '+':
-                result =  num1 + num2;
-                break;
-            case '-':
-                result =  num1 - num2;
-                break;
-            case '*':
-                result =  num1 * num2;
-                break;
+            case '+': result =  num1 + num2; break;
+            case '-': result =  num1 - num2; break;
+            case '*': result =  num1 * num2; break;
             case '/':
                 if (num2 != 0) result = num1 / num2;
-                std::cerr << "error: divion by zero\n";
+                else std::cerr << "error: divion by zero\n";
                 continue;
             default:
                 std::cerr << "inalid operator\n";
