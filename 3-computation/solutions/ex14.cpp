@@ -1,27 +1,59 @@
 #include <vector>
 #include <iostream>
 
-std::vector<int> gen_primes(int n) {
-    std::vector<bool> is_prime(n + 1, true);
-    is_prime[0] = is_prime[1] = false;
-    for (int i = 2; i < n; ++i) {
-        for (int j = i * i; j <= n; j += i) {
-            is_prime[j] = false;
+bool end_of_input(std::string name, int score) {
+    if (name == "NoName" && score == 0) {
+        return true;
+    }
+    return false;
+}
+
+bool duplicate(std::vector<std::string> names, std::string name) {
+    for (std::string n : names) {
+        if (n == name) {
+            return true;
         }
     }
-    std::vector<int> primes;
-    for (int i = 0; i < is_prime.size(); ++i) {
-        if (is_prime[i] == true) primes.push_back(i);
+    return false;
+}
+
+int find_score(std::vector<std::string> names, std::vector<int> scores, std::string name) {
+    for (int i = 0; i < names.size(); i++) {
+        if (names[i] == name) return scores[i];
     }
-    return primes;
+    return -1;
 }
 
 int main() {
-    int n = 0;
-    std::cout << "> ";
-    std::cin >> n;
-    std::vector<int> primes = gen_primes(n); // generate primes up to 300
-    for (int i = 0; i < primes.size(); ++i) {
-        std::cout << primes[i] << (i + 1 == primes.size() ? "\n" : ", ");
+    std::string name;
+    int score = 0;
+    std::vector<std::string> names;
+    std::vector<int> scores;
+
+    std::cout << "please enter names and scores (\"NoName 0\" to stop):\n";
+    while (std::cin >> name >> score) {
+        if (end_of_input(name, score)) {
+            break;
+        }
+        if (duplicate(names, name)) {
+            std::cerr << "Name can't be entered twice\n";
+            return 0;
+        }
+        names.push_back(name);
+        scores.push_back(score);
+    }
+    if (names.size() < 1) {
+        std::cerr << "no input collected\n";
+        return 0;
+    }
+    std::string search_name;
+    std::cout << "please type a name and i will return its corresponding score:\n";
+    while (std::cin >> search_name) {
+        int found_score = find_score(names, scores, search_name);
+        if (found_score != -1) {
+            std::cout << "the name " << search_name << " has the score of " << found_score << '\n';
+        } else {
+            std::cerr << "can't find name " << search_name << '\n';
+        }
     }
 }
