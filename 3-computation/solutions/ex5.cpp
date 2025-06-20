@@ -1,6 +1,9 @@
 #include <cstdlib>
 #include <iostream>
 
+// this program can't be exited normally, you will have to forcefully kill it
+// more on that in the next lecture
+
 int main() {
     int low = -1;
     int high = 101;
@@ -13,10 +16,6 @@ int main() {
         }
         std::cout << "Is it " << (low + high) / 2 << "? (h = higher, l = lower, y = yes): "; 
         std::cin >> ans;
-        if(std::cin.eof()){ // if EOF character entered (C-d or C-z), terminate the main function
-            std::cout << '\n';
-            return 0;  
-        } 
         switch (ans) {
         case 'y':
             std::cout << "yaaay\n";

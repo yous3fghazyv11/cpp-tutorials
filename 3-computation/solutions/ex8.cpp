@@ -24,14 +24,10 @@ std::string convert(std::string input) {
 }
 
 int main() {
-    while (std::cout << "> ") { // if the loop is not dependent on getting input, how are we gaing to stop it?
+    while (std::cout << "> ") {
         std::string num1, num2;
         char op = '\0';
         std::cin >> num1 >> op >> num2;
-        if (std::cin.eof()) { // like this
-            std::cout << "\nExiting...\n";
-            return 0;
-        } 
         int left = convert(num1)[0] - '0';
         int right = convert(num2)[0] - '0';
         int result = 0;

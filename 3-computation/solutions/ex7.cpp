@@ -2,18 +2,17 @@
 #include <string>
 #include <vector>
 
-std::vector<std::string> valid_numbers = {
-    "zero", "one", "two",   "three", "four",
-    "five", "six", "seven", "eight", "nine",
-};
-
-
 int main() {
+    std::vector<std::string> valid_numbers = {
+        "zero", "one", "two",   "three", "four",
+        "five", "six", "seven", "eight", "nine",
+    };
     for (std::string input; std::cin >> input;) {
         std::string output;
-        // if input is a single digit, return the element of valid_values that this digit is the index of
+        // if input is a single digit, return the element of valid_values that
+        // this digit is the index of
         if (input.size() == 1 && input[0] <= '9' && input[0] >= '0') {
-            output = valid_numbers[input[0] - '0']; 
+            output = valid_numbers[input[0] - '0'];
         }
         // try to process a string
         for (int i = 0; i < valid_numbers.size(); i++) {

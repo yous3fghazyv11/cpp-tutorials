@@ -4,7 +4,7 @@
 int main() {
     std::cout << "enter two numbers and operator in this format: (n op n)\n";
     for (double result; std::cout << "> ";) {
-        char op = '\0';
+        char op = '\0'; // nul character, means nothing literally
         double num1 = 0, num2 = 0;
         std::cin >> num1 >> op >> num2;
         switch (op) {
