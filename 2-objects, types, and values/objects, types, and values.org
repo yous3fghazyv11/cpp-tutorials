@@ -17,7 +17,6 @@
 - [[#الtypes-والobjects][الtypes والobjects]]
 - [[#الtype-safety][الtype safety]]
 - [[#الconversions][الconversions]]
-- [[#drill][Drill]]
 - [[#review][review]]
 - [[#exercises][exercises]]
 
@@ -725,89 +724,66 @@ std::pair p {"Hello",17}; // will explain this in future lectures
 
 اما بالنسبه للinitialization بال ~()~ فده احنا بنستخدمه في حالات محدده جدا
 
-* Drill
-After each step of this drill, run your program to make sure it is really doing what you expect it to.
-Keep a list of what mistakes you make so that you can try to avoid those in the future.
-
-- [1] Write a program that produces a simple form letter based on user input. Begin by typing
-  the code from the first section of the lecture prompting a user to enter his or her first name and writing ‘‘Hello,
-  first_name’’ where first_name is the name entered by the user. Then modify your code as
-  follows: change the prompt to ‘‘Enter the name of the person you want to write to’’ and
-  change the output to ‘‘Dear first_name ,’’. Don’t forget the comma.
-- [2] Add an introductory line or two, like ‘‘How are you? I am fine. I miss you.’’ Be sure to
-  indent the first line. Add a few more lines of your choosing – it’s your letter.
-- [3] Now prompt the user for the name of another friend and store it in friend_name. Add a
-  line to your letter: ‘‘Have you seen friend_name lately?’’
-- [4] Prompt the user to enter the age of the recipient and assign it to an int variable age. Have
-  your program write ‘‘I hear you just had a birthday and you are age years old.’’ If age is 0
-  or less or 110 or more, print the output "you’re kidding!".
-- [5] Add this to your letter:
-  If your friend is under 12, write ‘‘Next year you will be age+1.’’ If your friend is
-  17, write ‘‘Next year you will be able to vote.’’ If your friend is over 70, write ‘‘Are you retired?’’
-  Check your program to make sure it responds appropriately to each kind of value.
-- [6] Add ‘‘Yours sincerely,’’ followed by two blank lines for a signature, followed by your name.
-
-
 * review
-- [1] What is meant by the term prompt?
-- [2] Which operator do you use to read into a variable?
-- [3] What notations can you use to initialize an object?
-- [4] If you want the user to input an integer value into your program for a variable named number,
-  what are two lines of code you could write to ask the user to do it and to input the value into
-  your program?
-- [5] What is \n called and what purpose does it serve?
-- [6] What terminates input into a string?
-- [7] What terminates input into an integer?
-- [8] How would you write the following as a single line of code:
-  + ~std::cout << "Hello, ";~
-  + ~std::cout << first_name;~
-  + ~std::cout << "!\n";~
-- [9] What is an object?
-- [10] What is a literal?
-- [11] What kinds of literals are there?
-- [12] What is a variable?
-- [13] What are typical sizes for a char, an int, and a double?
-- [14] What measures do we use for the size of small entities in memory, such as ints and strings?
-- [15] What is the difference between ~=~ and ~==~?
-- [16] What is a definition?
-- [17] What is an initialization and how does it differ from an assignment?
-- [18] What is string concatenation and how do you make it work in C++?
-- [19] What operators can you apply to an int?
-- [20] Which of the following are legal names in C++? If a name is not legal, why not?
-  + ~This_little_pig~
-  + ~This_1_is fine~
-  + ~2_For_1_special~
-  + ~latest thing~
-  + ~George@home~
-  + ~_this_is_ok~
-  + ~MineMineMine~
-  + ~number~
-  + ~correct?~
-  + ~stroustrup.com~
-  + ~$PATH~
-- [21] Give five examples of legal names that you shouldn’t use because they are likely to cause confusion.
-- [22] What are some good rules for choosing names?
-- [23] What is type safety and why is it important?
-- [24] Why can conversion from double to int be a bad thing?
-- [25] Define a rule to help decide if a conversion from one type to another is safe or unsafe.
-- [26] How can we avoid undesirable conversions?
+1. What is meant by the term prompt?
+2. Which operator do you use to read into a variable?
+3. What notations can you use to initialize an object?
+4. If you want the user to input an integer value into your program for a variable named number,
+   what are two lines of code you could write to ask the user to do it and to input the value into
+   your program?
+5. What is \n called and what purpose does it serve?
+6. What terminates input into a string?
+7. What terminates input into an integer?
+8. How would you write the following as a single line of code:
+   + ~std::cout << "Hello, ";~
+   + ~std::cout << first_name;~
+   + ~std::cout << "!\n";~
+9. What is an object?
+10. What is a literal?
+11. What kinds of literals are there?
+12. What is a variable?
+13. What are typical sizes for a char, an int, and a double?
+14. What measures do we use for the size of small entities in memory, such as ints and strings?
+15. What is the difference between ~=~ and ~==~?
+16. What is a definition?
+17. What is an initialization and how does it differ from an assignment?
+18. What is string concatenation and how do you make it work in C++?
+19. What operators can you apply to an int?
+20. Which of the following are legal names in C++? If a name is not legal, why not?
+    + ~This_little_pig~
+    + ~This_1_is fine~
+    + ~2_For_1_special~
+    + ~latest thing~
+    + ~George@home~
+    + ~_this_is_ok~
+    + ~MineMineMine~
+    + ~number~
+    + ~correct?~
+    + ~stroustrup.com~
+    + ~$PATH~
+21. Give five examples of legal names that you shouldn’t use because they are likely to cause confusion.
+22. What are some good rules for choosing names?
+23. What is type safety and why is it important?
+24. Why can conversion from double to int be a bad thing?
+25. Define a rule to help decide if a conversion from one type to another is safe or unsafe.
+26. How can we avoid undesirable conversions?
 
 * exercises
-- [1] If you haven’t done so already, do the TRY THIS exercises from this lecture.
-- [2] Write a program in C++ that converts from miles to kilometers. Your program should have a reasonable prompt for the user to enter a number of miles. Hint: A mile is 1.609 kilometers.
-- [3] Write a program that does’t do anything, but declares a number of variables with legal and illegal names (such as int double = 0;), so that you can see how the compiler reacts.
-- [4] Write a program that prompts the user to enter two integer values. Store these values in int variables named val1 and val2. Write your program to determine the smaller, larger, sum, difference, product, and ratio of these values and report them to the user.
-- [5] Modify the program above to ask the user to enter floating-point values and store them in double variables. Compare the outputs of the two programs for some inputs of your choice. Are the results the same? Should they be? What’s the difference?
-- [6] Write a program that prompts the user to enter three integer values, and then outputs the values in numerical sequence separated by commas. So, if the user enters the values 10 4 6, the output should be 4, 6, 10. If two values are the same, they should just be ordered together. So, the input 4 5 4 should give 4, 4, 5.
-- [7] Write a program to test an integer value to determine if it is odd or even. As always, make sure your output is clear and complete. In other words, don’t just output yes or no. Your output should stand alone, like The value 4 is an even number. Hint: use the modulo operator ~%~.
-- [8] Write a program that converts spelled-out numbers such as ‘‘zero’’ and ‘‘two’’ into digits, such as 0 and 2. When the user inputs a number, the program should print out the corresponding digit. Do it for the values 0, 1, 2, 3, and 4 and write out not a number I know if the user enters something that doesn’t correspond, such as stupid computer! or 99.
-- [9] Write a program that takes an operation followed by two operands and outputs the result. For example:
-  + ~+ 100 3.14~
-  + ~∗4 5~
-- [10] Write a program that takes a double as input, and tries to put that ~double~ in an ~int~ and ~char~ variables and outputs the results. Run this program with verity of inputs:
-  + Small values: like 2 or 3.
-  + Large numbers: larger than 127, 255 or 1000.
-  + Negative values.
-  + 56, 89 and 128.
-  + floating-point values: like 65.9 or 56.2.
-  you will find that your program produces 'unreasonable' results when converted. basically you are trying to pour a gallon into a pint pot (about 4 liters into 500ml glass).
+1. If you haven’t done so already, do the TRY THIS exercises from this lecture.
+2. Write a program in C++ that converts from miles to kilometers. Your program should have a reasonable prompt for the user to enter a number of miles. Hint: A mile is 1.609 kilometers.
+3. Write a program that does’t do anything, but declares a number of variables with legal and illegal names (such as int double = 0;), so that you can see how the compiler reacts.
+4. Write a program that prompts the user to enter two integer values. Store these values in int variables named val1 and val2. Write your program to determine the smaller, larger, sum, difference, product, and ratio of these values and report them to the user.
+5. Modify the program above to ask the user to enter floating-point values and store them in double variables. Compare the outputs of the two programs for some inputs of your choice. Are the results the same? Should they be? What’s the difference?
+6. Write a program that prompts the user to enter three integer values, and then outputs the values in numerical sequence separated by commas. So, if the user enters the values 10 4 6, the output should be 4, 6, 10. If two values are the same, they should just be ordered together. So, the input 4 5 4 should give 4, 4, 5.
+7. Write a program to test an integer value to determine if it is odd or even. As always, make sure your output is clear and complete. In other words, don’t just output yes or no. Your output should stand alone, like The value 4 is an even number. Hint: use the modulo operator ~%~.
+8. Write a program that converts spelled-out numbers such as ‘‘zero’’ and ‘‘two’’ into digits, such as 0 and 2. When the user inputs a number, the program should print out the corresponding digit. Do it for the values 0, 1, 2, 3, and 4 and write out not a number I know if the user enters something that doesn’t correspond, such as stupid computer! or 99.
+9. Write a program that takes an operation followed by two operands and outputs the result. For example:
+   + ~+ 100 3.14~
+   + ~∗4 5~
+10. Write a program that takes a double as input, and tries to put that ~double~ in an ~int~ and ~char~ variables and outputs the results. Run this program with verity of inputs:
+    + Small values: like 2 or 3.
+    + Large numbers: larger than 127, 255 or 1000.
+    + Negative values.
+    + 56, 89 and 128.
+    + floating-point values: like 65.9 or 56.2.
+    you will find that your program produces 'unreasonable' results when converted. basically you are trying to pour a gallon into a pint pot (about 4 liters into 500ml glass).
