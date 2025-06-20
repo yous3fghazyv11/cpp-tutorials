@@ -2,10 +2,11 @@
 #include <iostream>
 
 int main() {
-    std::vector<bool> is_prime(101, true);
+    constexpr int MAX = 100;
+    std::vector<bool> is_prime(MAX + 1, true);
     is_prime[0] = is_prime[1] = false;
-    for (int i = 2; i < 100; ++i) {
-        for (int j = i * i; j <= 100; j += i) {
+    for (int i = 2; i < MAX; ++i) {
+        for (int j = i * i; j <= MAX; j += i) {
             is_prime[j] = false;
         }
     }

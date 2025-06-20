@@ -3,7 +3,7 @@
 #include <vector>
 
 int main() {
-    std::vector<std::string> valid_numbers = {
+    const std::vector<std::string> valid_numbers = {
         "zero", "one", "two",   "three", "four",
         "five", "six", "seven", "eight", "nine",
     };

@@ -3,12 +3,12 @@
 #include <string>
 #include <vector>
 
-std::vector<std::string> valid_numbers = {
+const std::vector<std::string> valid_numbers = {
     "zero", "one", "two",   "three", "four",
     "five", "six", "seven", "eight", "nine",
 };
 
-std::string convert(std::string input) {
+std::string convert(const std::string input) {
     std::string output;
     // if input is a single digit, return that digit
     if (input.size() == 1 && input[0] <= '9' && input[0] >= '0') {

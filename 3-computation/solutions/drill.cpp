@@ -32,7 +32,7 @@ bool valid_input(double num, std::string unit)
     if (num <= 0) { 
         return false;
     }
-    std::vector<std::string> valid_units = {"cm", "in", "m", "ft"};
+    const std::vector<std::string> valid_units = {"cm", "in", "m", "ft"};
     for (std::string u : valid_units) {
         if (unit == u)
             return true;
