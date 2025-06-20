@@ -5,12 +5,18 @@ int main() {
     int low = -1;
     int high = 101;
     std::cout << "Think of a number from 0 to 100 and i will guess it:\n";
-    for (char ans ='\0'; std::cin >> ans;) {// control variable is where the input is going to be stored
+    while (true) {
+        char ans = '\0';
         if (abs(high - low) <= 1) {
             std::cout << "did you forget your number?\n";
             return 0;
         }
-        std::cout << "Is it " << (low + high) / 2 << "? (h = higher, l = lower, y = yes): "; // prompt
+        std::cout << "Is it " << (low + high) / 2 << "? (h = higher, l = lower, y = yes): "; 
+        std::cin >> ans;
+        if(std::cin.eof()){ // if EOF character entered (C-d or C-z), terminate the main function
+            std::cout << '\n';
+            return 0;  
+        } 
         switch (ans) {
         case 'y':
             std::cout << "yaaay\n";
