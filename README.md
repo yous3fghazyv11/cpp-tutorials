@@ -13,21 +13,22 @@ Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
 
 The code in this repository is a supplement to my [YouTube tutorials](https://www.youtube.com/@yousefghazy).
 
-Each directory in this repo corresponds to a YouTube video and contains the `.org` file featured in that video, which includes the full tutorial.
+Each directory in this repo corresponds to a YouTube video and contains:  
 
-You may also find few sub directories with with header files if any are used in the lecture.  
+- the `.org` file featured in that video, which includes the full tutorial.  
+- sub directory with the solutions for the drill and exercises  
+
+You may also find few sub directories with header files if any are used in the lecture.  
 
 Images used in the `.org` files will live in the images directory, links from `.org` files will refer to them.
 
 > [!Warning]  
 > When following along with course, please don't skip any drills or exercises or review questions,  
 > that is if you want to get the maximum benefit of the course.
-
-> [!Note]  
-> **Why i didn't post the solutions?**  
-> Even a little peek at the solution can ruin the whole idea of the exercise for you,
-> and as a learner myself, i know that it gets very hard to resist peeking at the solution
-> specially when the problem is hard.
+> Even a little peek at the solution can ruin the whole idea of the exercise for you,  
+> and as a learner myself, i know that it gets very hard to resist peeking at the solution.  
+> But if you really want to get the maximum benefit of the course, only check out the solutions  
+> to compare them to your own work!  
 > **What if I'm stuck and i really need help?**  
 > Use the issues section to raise an issue, i will help you ^_^
 
