@@ -3,7 +3,7 @@
 ## Introduction  
 **Welcome to my humble programming with C++ tutorials.**
 
-The code in this repository is a supplement to my [YouTube tutorials](https://www.youtube.com/@yousefghazy).
+These are a series of [YouTube tutorials](https://www.youtube.com/@yousefghazy) designed to help you learn and master the basic principles and techniques of programming using the C++ programming language.  
 
 
 > [!NOTE]
@@ -15,6 +15,8 @@ The code in this repository is a supplement to my [YouTube tutorials](https://ww
 Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
 
 ## About this repo  
+
+this repository is a supplement to my [YouTube tutorials](https://www.youtube.com/@yousefghazy) and it will contain all the tutorials in the YouTube videos in the `.org` format, along with the source code files.
 
 Each directory in this repo corresponds to a YouTube video and contains:  
 
