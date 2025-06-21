@@ -3,7 +3,7 @@
 > [!NOTE]
 > The project is still under development  
 >  
-> ![](https://geps.dev/progress/6)
+> ![](https://geps.dev/progress/12)
 
 
 Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
