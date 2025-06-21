@@ -1,0 +1,4 @@
+#+TITLE: Errors
+#+AUTHOR: Yousef Ghazy
+#+DESCRIPTION: Hendling errors in programs
+#+OPTIONS: toc:nil
