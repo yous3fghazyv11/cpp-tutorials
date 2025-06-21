@@ -1,5 +1,11 @@
 # Basics of Programming in C++
 
+## Introduction  
+**Welcome to my humble programming with C++ tutorials.**
+
+The code in this repository is a supplement to my [YouTube tutorials](https://www.youtube.com/@yousefghazy).
+
+
 > [!NOTE]
 > The project is still under development  
 >  
@@ -8,10 +14,7 @@
 
 Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
 
-## Introduction
-**Welcome to my humble programming with C++ tutorials.**
-
-The code in this repository is a supplement to my [YouTube tutorials](https://www.youtube.com/@yousefghazy).
+## About this repo  
 
 Each directory in this repo corresponds to a YouTube video and contains:  
 
