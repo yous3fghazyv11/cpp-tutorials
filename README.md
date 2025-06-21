@@ -23,11 +23,11 @@ You may also find few sub directories with header files if any are used in the l
 Images used in the `.org` files will live in the images directory, links from `.org` files will refer to them.
 
 > [!Warning]  
-> When following along with course, please don't skip any drills or exercises or review questions,  
-> that is if you want to get the maximum benefit of the course.
+> When following along with course, please don't skip any drills or exercises or review questions,
+> that is if you want to get the maximum benefit of the course.  
 > Even a little peek at the solution can ruin the whole idea of the exercise for you,  
 > and as a learner myself, i know that it gets very hard to resist peeking at the solution.  
-> But if you really want to get the maximum benefit of the course, only check out the solutions  
+> But if you really want to get the maximum benefit of the course, only check out the solutions
 > to compare them to your own work!  
 > **What if I'm stuck and i really need help?**  
 > Use the issues section to raise an issue, i will help you ^_^
