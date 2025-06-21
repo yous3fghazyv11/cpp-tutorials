@@ -2,6 +2,8 @@
 #include <limits>
 #include <string>
 #include <vector>
+#include <algorithm>
+
 
 bool valid_unit(std::string unit);
 bool valid_input(double num, std::string unit);
@@ -87,6 +89,13 @@ int main() {
         if (i != (values.size() - 1)) {
             std::cout << ", ";
         }
+    }
+    std::cout << "]\n";
+    // printing out values converted to meter
+    std::cout << "Values in meters: [";
+    std::ranges::sort(converted_values);
+    for (int i = 0; i < converted_values.size(); ++i) {
+        std::cout << converted_values[i] << (i + 1 == converted_values.size() ? "m" : "m, ");
     }
     std::cout << "]\n";
     // printing out sum in meters
